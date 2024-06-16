@@ -1,11 +1,11 @@
 # bunny-sdk
 
-![Packagist - Version](https://img.shields.io/packagist/v/bunnylauncher/bunny-sdk?color=blue)
+![Packagist - Version](https://img.shields.io/packagist/v/bunny-launcher/bunny-sdk?color=blue)
 
 ## Install
 
 ```shell
-composer require bunnylauncher/bunny-sdk
+composer require bunny-launcher/bunny-sdk
 ```
 
 ## Documentation
@@ -41,4 +41,4 @@ Please read the [docs](https://bunny-launcher.com/bunny-sdk/php) for usage and e
 - `git tag v0.0.1`
 - `git push origin v0.0.1`
 
-- `curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=bunny-launcher&apiToken=API_TOKEN' -d'{"repository":{"url":"https://packagist.org/packages/bunnylauncher/bunny-sdk"}}'`
+- `curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=bunny-launcher&apiToken=API_TOKEN' -d'{"repository":{"url":"https://packagist.org/packages/bunny-launcher/bunny-sdk"}}'`
