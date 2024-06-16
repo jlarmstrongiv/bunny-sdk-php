@@ -1,0 +1,35 @@
+{
+    "name": "bunnylauncher/bunny-sdk",
+    "description": "PHP SDK for BunnyCDN 🐰",
+    "type": "library",
+    "require": {
+        "php": "^8.0 || ^7.4",
+        "microsoft/kiota-abstractions": "^1.4",
+        "microsoft/kiota-http-guzzle": "^1.3",
+        "microsoft/kiota-serialization-json": "^1.3",
+        "microsoft/kiota-serialization-text": "^1.1",
+        "microsoft/kiota-serialization-form": "^1.1",
+        "microsoft/kiota-serialization-multipart": "^1.0"
+    },
+    "license": "AGPL-3.0-only",
+    "autoload": {
+        "psr-4": {
+            "BunnyLauncher\\BunnySdk\\": "src/",
+            "Microsoft\\Kiota\\Authentication\\": "src/kiota/",
+            "BunnyApiClient\\": "src/generated/BunnyApiClient/",
+            "EdgeStorageApiClient\\": "src/generated/EdgeStorageApiClient/",
+            "StreamApiClient\\": "src/generated/StreamApiClient/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John L. Armstrong IV"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
