@@ -21,7 +21,6 @@ use Microsoft\Kiota\Serialization\Json\JsonSerializationWriterFactory;
 use Microsoft\Kiota\Serialization\Multipart\MultipartSerializationWriterFactory;
 use Microsoft\Kiota\Serialization\Text\TextParseNodeFactory;
 use Microsoft\Kiota\Serialization\Text\TextSerializationWriterFactory;
-use Microsoft\Kiota\Abstractions\Serialization\SerializationWriterFactory;
 
 /**
  * The main entry point of the SDK, exposes the configuration and the fluent API.

@@ -60,12 +60,12 @@ class VideolibraryRequestBuilder extends BaseRequestBuilder
     /**
      * [ListVideoLibraries API Docs](https://docs.bunny.net/reference/videolibrarypublic_index)
      * @param VideolibraryRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<array<VideoLibrary>|null>
+     * @return Promise<VideolibraryGetResponse|null>
      * @throws Exception
     */
     public function get(?VideolibraryRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendCollectionAsync($requestInfo, [VideoLibrary::class, 'createFromDiscriminatorValue'], null);
+        return $this->requestAdapter->sendAsync($requestInfo, [VideolibraryGetResponse::class, 'createFromDiscriminatorValue'], null);
     }
 
     /**

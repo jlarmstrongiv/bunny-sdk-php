@@ -61,12 +61,12 @@ class StoragezoneRequestBuilder extends BaseRequestBuilder
     /**
      * [ListStorageZones API Docs](https://docs.bunny.net/reference/storagezonepublic_index)
      * @param StoragezoneRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<array<StorageZone>|null>
+     * @return Promise<StoragezoneGetResponse|null>
      * @throws Exception
     */
     public function get(?StoragezoneRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendCollectionAsync($requestInfo, [StorageZone::class, 'createFromDiscriminatorValue'], null);
+        return $this->requestAdapter->sendAsync($requestInfo, [StoragezoneGetResponse::class, 'createFromDiscriminatorValue'], null);
     }
 
     /**

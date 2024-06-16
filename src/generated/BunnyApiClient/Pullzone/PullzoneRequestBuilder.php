@@ -61,12 +61,12 @@ class PullzoneRequestBuilder extends BaseRequestBuilder
     /**
      * [ListPullZones API Docs](https://docs.bunny.net/reference/pullzonepublic_index)
      * @param PullzoneRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<array<PullZone>|null>
+     * @return Promise<PullzoneGetResponse|null>
      * @throws Exception
     */
     public function get(?PullzoneRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendCollectionAsync($requestInfo, [PullZone::class, 'createFromDiscriminatorValue'], null);
+        return $this->requestAdapter->sendAsync($requestInfo, [PullzoneGetResponse::class, 'createFromDiscriminatorValue'], null);
     }
 
     /**
