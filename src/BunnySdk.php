@@ -10,8 +10,6 @@ use Microsoft\Kiota\Authentication\KeyLocation;
 
 use Microsoft\Kiota\Http\GuzzleRequestAdapter;
 
-require __DIR__.'/../vendor/autoload.php';
-
 function createBunnyApiClient(string $accessKey): BunnyApiClient 
 {
     $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
