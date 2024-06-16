@@ -1,5 +1,5 @@
 {
-    "name": "bunnylauncher/bunny-sdk",
+    "name": "bunny-launcher/bunny-sdk",
     "description": "PHP SDK for BunnyCDN 🐰",
     "type": "library",
     "require": {
