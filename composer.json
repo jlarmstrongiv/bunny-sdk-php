@@ -19,7 +19,10 @@
             "BunnyApiClient\\": "src/generated/BunnyApiClient/",
             "EdgeStorageApiClient\\": "src/generated/EdgeStorageApiClient/",
             "StreamApiClient\\": "src/generated/StreamApiClient/"
-        }
+        },
+        "files": [
+            "src/functions_include.php"
+        ]
     },
     "authors": [
         {
