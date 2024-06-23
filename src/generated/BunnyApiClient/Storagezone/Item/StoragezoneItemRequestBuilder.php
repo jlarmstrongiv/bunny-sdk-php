@@ -4,6 +4,7 @@ namespace BunnyApiClient\Storagezone\Item;
 
 use BunnyApiClient\Models\StorageZone\StorageZone;
 use BunnyApiClient\Models\StorageZone\StorageZoneCreate;
+use BunnyApiClient\Storagezone\Item\Connections\ConnectionsRequestBuilder;
 use BunnyApiClient\Storagezone\Item\ResetPassword\ResetPasswordRequestBuilder;
 use BunnyApiClient\Storagezone\Item\Statistics\StatisticsRequestBuilder;
 use Exception;
@@ -18,6 +19,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class StoragezoneItemRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The connections property
+    */
+    public function connections(): ConnectionsRequestBuilder {
+        return new ConnectionsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The resetPassword property
     */

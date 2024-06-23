@@ -35,7 +35,7 @@ class StoragezoneRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the BunnyApiClient.storagezone.item collection
-     * @param int $id Unique identifier of the item
+     * @param int $id The ID of the Storage Zone that should be returned
      * @return StoragezoneItemRequestBuilder
     */
     public function byId(int $id): StoragezoneItemRequestBuilder {

@@ -2,8 +2,11 @@
 
 namespace BunnyApiClient;
 
+use BunnyApiClient\Abusecase\AbusecaseRequestBuilder;
 use BunnyApiClient\Apikey\ApikeyRequestBuilder;
+use BunnyApiClient\Compute\ComputeRequestBuilder;
 use BunnyApiClient\Country\CountryRequestBuilder;
+use BunnyApiClient\Dmca\DmcaRequestBuilder;
 use BunnyApiClient\Dnszone\DnszoneRequestBuilder;
 use BunnyApiClient\Pullzone\PullzoneRequestBuilder;
 use BunnyApiClient\Purge\PurgeRequestBuilder;
@@ -28,6 +31,13 @@ use Microsoft\Kiota\Serialization\Text\TextSerializationWriterFactory;
 class BunnyApiClient extends BaseRequestBuilder 
 {
     /**
+     * The abusecase property
+    */
+    public function abusecase(): AbusecaseRequestBuilder {
+        return new AbusecaseRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * The apikey property
     */
     public function apikey(): ApikeyRequestBuilder {
@@ -35,10 +45,24 @@ class BunnyApiClient extends BaseRequestBuilder
     }
     
     /**
+     * The compute property
+    */
+    public function compute(): ComputeRequestBuilder {
+        return new ComputeRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * The country property
     */
     public function country(): CountryRequestBuilder {
         return new CountryRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The dmca property
+    */
+    public function dmca(): DmcaRequestBuilder {
+        return new DmcaRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

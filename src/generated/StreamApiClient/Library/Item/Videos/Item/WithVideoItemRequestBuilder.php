@@ -8,6 +8,7 @@ use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
+use Psr\Http\Message\StreamInterface;
 use StreamApiClient\Library\Item\Videos\Item\Captions\CaptionsRequestBuilder;
 use StreamApiClient\Library\Item\Videos\Item\Heatmap\HeatmapRequestBuilder;
 use StreamApiClient\Library\Item\Videos\Item\Play\PlayRequestBuilder;
@@ -123,12 +124,13 @@ class WithVideoItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * [UploadVideo API Docs](https://docs.bunny.net/reference/video_uploadvideo)
+     * @param StreamInterface $body Binary request body
      * @param WithVideoItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<StructuredSuccessResponse|null>
      * @throws Exception
     */
-    public function put(?WithVideoItemRequestBuilderPutRequestConfiguration $requestConfiguration = null): Promise {
-        $requestInfo = $this->toPutRequestInformation($requestConfiguration);
+    public function put(StreamInterface $body, ?WithVideoItemRequestBuilderPutRequestConfiguration $requestConfiguration = null): Promise {
+        $requestInfo = $this->toPutRequestInformation($body, $requestConfiguration);
         return $this->requestAdapter->sendAsync($requestInfo, [StructuredSuccessResponse::class, 'createFromDiscriminatorValue'], null);
     }
 
@@ -190,10 +192,11 @@ class WithVideoItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * [UploadVideo API Docs](https://docs.bunny.net/reference/video_uploadvideo)
+     * @param StreamInterface $body Binary request body
      * @param WithVideoItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function toPutRequestInformation(?WithVideoItemRequestBuilderPutRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toPutRequestInformation(StreamInterface $body, ?WithVideoItemRequestBuilderPutRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -206,6 +209,7 @@ class WithVideoItemRequestBuilder extends BaseRequestBuilder
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
         $requestInfo->tryAddHeader('Accept', "application/json");
+        $requestInfo->setStreamContent($body, "application/octet-stream");
         return $requestInfo;
     }
 

@@ -21,6 +21,7 @@ use BunnyApiClient\Pullzone\Item\RemoveHostname\RemoveHostnameRequestBuilder;
 use BunnyApiClient\Pullzone\Item\ResetSecurityKey\ResetSecurityKeyRequestBuilder;
 use BunnyApiClient\Pullzone\Item\Safehop\SafehopRequestBuilder;
 use BunnyApiClient\Pullzone\Item\SetForceSSL\SetForceSSLRequestBuilder;
+use BunnyApiClient\Pullzone\Item\Waf\WafRequestBuilder;
 use Exception;
 use Http\Promise\Promise;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -150,6 +151,13 @@ class ItemRequestBuilder extends BaseRequestBuilder
     */
     public function setForceSSL(): SetForceSSLRequestBuilder {
         return new SetForceSSLRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The waf property
+    */
+    public function waf(): WafRequestBuilder {
+        return new WafRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
