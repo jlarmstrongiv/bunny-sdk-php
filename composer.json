@@ -1,6 +1,6 @@
 {
     "name": "bunny-launcher/bunny-sdk",
-    "description": "PHP SDK for BunnyCDN 🐰",
+    "description": "PHP SDK for bunny.net 🐰",
     "type": "library",
     "require": {
         "php": "^8.0 || ^7.4",
