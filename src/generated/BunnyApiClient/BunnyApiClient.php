@@ -13,6 +13,7 @@ use BunnyApiClient\Purge\PurgeRequestBuilder;
 use BunnyApiClient\Region\RegionRequestBuilder;
 use BunnyApiClient\Statistics\StatisticsRequestBuilder;
 use BunnyApiClient\Storagezone\StoragezoneRequestBuilder;
+use BunnyApiClient\User\UserRequestBuilder;
 use BunnyApiClient\Videolibrary\VideolibraryRequestBuilder;
 use Microsoft\Kiota\Abstractions\ApiClientBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -105,6 +106,13 @@ class BunnyApiClient extends BaseRequestBuilder
     */
     public function storagezone(): StoragezoneRequestBuilder {
         return new StoragezoneRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The user property
+    */
+    public function user(): UserRequestBuilder {
+        return new UserRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

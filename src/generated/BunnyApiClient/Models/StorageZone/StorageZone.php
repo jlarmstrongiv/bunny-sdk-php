@@ -57,9 +57,9 @@ class StorageZone implements AdditionalDataHolder, Parsable
     private ?string $password = null;
     
     /**
-     * @var int|null $priceOverride The PriceOverride property
+     * @var float|null $priceOverride The PriceOverride property
     */
-    private ?int $priceOverride = null;
+    private ?float $priceOverride = null;
     
     /**
      * @var array<PullZone>|null $pullZones The PullZones property
@@ -182,7 +182,7 @@ class StorageZone implements AdditionalDataHolder, Parsable
             'Id' => fn(ParseNode $n) => $o->setId($n->getIntegerValue()),
             'Name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'Password' => fn(ParseNode $n) => $o->setPassword($n->getStringValue()),
-            'PriceOverride' => fn(ParseNode $n) => $o->setPriceOverride($n->getIntegerValue()),
+            'PriceOverride' => fn(ParseNode $n) => $o->setPriceOverride($n->getFloatValue()),
             'PullZones' => fn(ParseNode $n) => $o->setPullZones($n->getCollectionOfObjectValues([PullZone::class, 'createFromDiscriminatorValue'])),
             'ReadOnlyPassword' => fn(ParseNode $n) => $o->setReadOnlyPassword($n->getStringValue()),
             'Region' => fn(ParseNode $n) => $o->setRegion($n->getEnumValue(StandardRegions::class)),
@@ -230,9 +230,9 @@ class StorageZone implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the PriceOverride property value. The PriceOverride property
-     * @return int|null
+     * @return float|null
     */
-    public function getPriceOverride(): ?int {
+    public function getPriceOverride(): ?float {
         return $this->priceOverride;
     }
 
@@ -404,9 +404,9 @@ class StorageZone implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the PriceOverride property value. The PriceOverride property
-     * @param int|null $value Value to set for the PriceOverride property.
+     * @param float|null $value Value to set for the PriceOverride property.
     */
-    public function setPriceOverride(?int $value): void {
+    public function setPriceOverride(?float $value): void {
         $this->priceOverride = $value;
     }
 

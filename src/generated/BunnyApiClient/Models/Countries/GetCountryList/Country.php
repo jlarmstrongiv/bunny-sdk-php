@@ -46,9 +46,9 @@ class Country implements AdditionalDataHolder, Parsable
     private ?string $taxPrefix = null;
     
     /**
-     * @var int|null $taxRate The TaxRate property
+     * @var float|null $taxRate The TaxRate property
     */
-    private ?int $taxRate = null;
+    private ?float $taxRate = null;
     
     /**
      * Instantiates a new Country and sets the default values.
@@ -94,7 +94,7 @@ class Country implements AdditionalDataHolder, Parsable
                 $this->setPopList($val);
             },
             'TaxPrefix' => fn(ParseNode $n) => $o->setTaxPrefix($n->getStringValue()),
-            'TaxRate' => fn(ParseNode $n) => $o->setTaxRate($n->getIntegerValue()),
+            'TaxRate' => fn(ParseNode $n) => $o->setTaxRate($n->getFloatValue()),
         ];
     }
 
@@ -148,9 +148,9 @@ class Country implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the TaxRate property value. The TaxRate property
-     * @return int|null
+     * @return float|null
     */
-    public function getTaxRate(): ?int {
+    public function getTaxRate(): ?float {
         return $this->taxRate;
     }
 
@@ -165,7 +165,7 @@ class Country implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('Name', $this->getName());
         $writer->writeCollectionOfPrimitiveValues('PopList', $this->getPopList());
         $writer->writeStringValue('TaxPrefix', $this->getTaxPrefix());
-        $writer->writeIntegerValue('TaxRate', $this->getTaxRate());
+        $writer->writeFloatValue('TaxRate', $this->getTaxRate());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -227,9 +227,9 @@ class Country implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the TaxRate property value. The TaxRate property
-     * @param int|null $value Value to set for the TaxRate property.
+     * @param float|null $value Value to set for the TaxRate property.
     */
-    public function setTaxRate(?int $value): void {
+    public function setTaxRate(?float $value): void {
         $this->taxRate = $value;
     }
 

@@ -363,9 +363,9 @@ class PullZone implements AdditionalDataHolder, Parsable
     private ?float $limitRateAfter = null;
     
     /**
-     * @var int|null $limitRatePerSecond The maximum rate at which the zone will transfer data in kb/s. 0 for unlimited
+     * @var float|null $limitRatePerSecond The maximum rate at which the zone will transfer data in kb/s. 0 for unlimited
     */
-    private ?int $limitRatePerSecond = null;
+    private ?float $limitRatePerSecond = null;
     
     /**
      * @var float|null $logAnonymizationType The LogAnonymizationType property
@@ -1443,7 +1443,7 @@ class PullZone implements AdditionalDataHolder, Parsable
             'Id' => fn(ParseNode $n) => $o->setId($n->getIntegerValue()),
             'IgnoreQueryStrings' => fn(ParseNode $n) => $o->setIgnoreQueryStrings($n->getBooleanValue()),
             'LimitRateAfter' => fn(ParseNode $n) => $o->setLimitRateAfter($n->getFloatValue()),
-            'LimitRatePerSecond' => fn(ParseNode $n) => $o->setLimitRatePerSecond($n->getIntegerValue()),
+            'LimitRatePerSecond' => fn(ParseNode $n) => $o->setLimitRatePerSecond($n->getFloatValue()),
             'LogAnonymizationType' => fn(ParseNode $n) => $o->setLogAnonymizationType($n->getFloatValue()),
             'LogFormat' => fn(ParseNode $n) => $o->setLogFormat($n->getFloatValue()),
             'LogForwardingEnabled' => fn(ParseNode $n) => $o->setLogForwardingEnabled($n->getBooleanValue()),
@@ -1579,9 +1579,9 @@ class PullZone implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the LimitRatePerSecond property value. The maximum rate at which the zone will transfer data in kb/s. 0 for unlimited
-     * @return int|null
+     * @return float|null
     */
-    public function getLimitRatePerSecond(): ?int {
+    public function getLimitRatePerSecond(): ?float {
         return $this->limitRatePerSecond;
     }
 
@@ -2312,7 +2312,7 @@ class PullZone implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('FollowRedirects', $this->getFollowRedirects());
         $writer->writeBooleanValue('IgnoreQueryStrings', $this->getIgnoreQueryStrings());
         $writer->writeFloatValue('LimitRateAfter', $this->getLimitRateAfter());
-        $writer->writeIntegerValue('LimitRatePerSecond', $this->getLimitRatePerSecond());
+        $writer->writeFloatValue('LimitRatePerSecond', $this->getLimitRatePerSecond());
         $writer->writeFloatValue('LogAnonymizationType', $this->getLogAnonymizationType());
         $writer->writeFloatValue('LogFormat', $this->getLogFormat());
         $writer->writeBooleanValue('LogForwardingEnabled', $this->getLogForwardingEnabled());
@@ -2953,9 +2953,9 @@ class PullZone implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the LimitRatePerSecond property value. The maximum rate at which the zone will transfer data in kb/s. 0 for unlimited
-     * @param int|null $value Value to set for the LimitRatePerSecond property.
+     * @param float|null $value Value to set for the LimitRatePerSecond property.
     */
-    public function setLimitRatePerSecond(?int $value): void {
+    public function setLimitRatePerSecond(?float $value): void {
         $this->limitRatePerSecond = $value;
     }
 
