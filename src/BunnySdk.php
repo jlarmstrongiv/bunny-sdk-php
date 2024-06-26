@@ -1,6 +1,6 @@
 <?php
 
-namespace BunnyLauncher\BunnySdk;
+namespace BunnyLauncher;
 
 use BunnyApiClient\BunnyApiClient;
 use EdgeStorageApiClient\EdgeStorageApiClient;
@@ -11,30 +11,31 @@ use Microsoft\Kiota\Authentication\KeyLocation;
 
 use Microsoft\Kiota\Http\GuzzleRequestAdapter;
 
-function create_bunny_api_client(string $accessKey): BunnyApiClient
-{
-  $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
-  $requestAdapter = new GuzzleRequestAdapter($authProvider);
-  return new BunnyApiClient($requestAdapter);
+class BunnySdk {
+  private function __construct() {}
+
+  public static function createBunnyApiClient(string $accessKey): BunnyApiClient {
+    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
+    $requestAdapter = new GuzzleRequestAdapter($authProvider);
+    return new BunnyApiClient($requestAdapter);
+  }
+  
+  public static function createEdgeStorageApiClient(string $accessKey): EdgeStorageApiClient {
+    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
+    $requestAdapter = new GuzzleRequestAdapter($authProvider);
+    return new EdgeStorageApiClient($requestAdapter);
+  }
+  
+  public static function createStreamApiClient(string $accessKey): StreamApiClient {
+    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
+    $requestAdapter = new GuzzleRequestAdapter($authProvider);
+    return new StreamApiClient($requestAdapter);
+  }
+  
+  public static function createLoggingApiClient(string $accessKey): LoggingApiClient {
+    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
+    $requestAdapter = new GuzzleRequestAdapter($authProvider);
+    return new LoggingApiClient($requestAdapter);
+  }
 }
 
-function create_edge_storage_api_client(string $accessKey): EdgeStorageApiClient
-{
-  $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
-  $requestAdapter = new GuzzleRequestAdapter($authProvider);
-  return new EdgeStorageApiClient($requestAdapter);
-}
-
-function create_stream_api_client(string $accessKey): StreamApiClient
-{
-  $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
-  $requestAdapter = new GuzzleRequestAdapter($authProvider);
-  return new StreamApiClient($requestAdapter);
-}
-
-function create_logging_api_client(string $accessKey): LoggingApiClient
-{
-  $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
-  $requestAdapter = new GuzzleRequestAdapter($authProvider);
-  return new LoggingApiClient($requestAdapter);
-}
