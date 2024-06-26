@@ -15,6 +15,9 @@
 
 - `asdf install php 8.3.8`
 
+- VS Code extensions
+  - `bmewburn.vscode-intelephense-client`
+
 ## Updating
 
 - `composer install` or `composer update`

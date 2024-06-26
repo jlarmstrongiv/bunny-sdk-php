@@ -11,28 +11,28 @@ use Microsoft\Kiota\Authentication\KeyLocation;
 
 use Microsoft\Kiota\Http\GuzzleRequestAdapter;
 
-function createBunnyApiClient(string $accessKey): BunnyApiClient
+function create_bunny_api_client(string $accessKey): BunnyApiClient
 {
   $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
   $requestAdapter = new GuzzleRequestAdapter($authProvider);
   return new BunnyApiClient($requestAdapter);
 }
 
-function createEdgeStorageApiClient(string $accessKey): EdgeStorageApiClient
+function create_edge_storage_api_client(string $accessKey): EdgeStorageApiClient
 {
   $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
   $requestAdapter = new GuzzleRequestAdapter($authProvider);
   return new EdgeStorageApiClient($requestAdapter);
 }
 
-function createStreamApiClient(string $accessKey): StreamApiClient
+function create_stream_api_client(string $accessKey): StreamApiClient
 {
   $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
   $requestAdapter = new GuzzleRequestAdapter($authProvider);
   return new StreamApiClient($requestAdapter);
 }
 
-function createLoggingApiClient(string $accessKey): LoggingApiClient
+function create_logging_api_client(string $accessKey): LoggingApiClient
 {
   $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
   $requestAdapter = new GuzzleRequestAdapter($authProvider);

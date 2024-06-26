@@ -16,9 +16,10 @@
         "psr-4": {
             "BunnyLauncher\\BunnySdk\\": "src/",
             "Microsoft\\Kiota\\Authentication\\": "src/kiota/",
-            "BunnyApiClient\\": "src/generated/BunnyApiClient/",
-            "EdgeStorageApiClient\\": "src/generated/EdgeStorageApiClient/",
-            "StreamApiClient\\": "src/generated/StreamApiClient/"
+            "BunnyApiClient\\": "src/BunnyApiClient/",
+            "EdgeStorageApiClient\\": "src/EdgeStorageApiClient/",
+            "LoggingApiClient\\": "src/LoggingApiClient/",
+            "StreamApiClient\\": "src/StreamApiClient/"
         },
         "files": [
             "src/functions_include.php"
