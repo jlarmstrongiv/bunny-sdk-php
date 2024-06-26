@@ -20,9 +20,10 @@ class BunnySdk {
     return new BunnyApiClient($requestAdapter);
   }
   
-  public static function createEdgeStorageApiClient(string $accessKey): EdgeStorageApiClient {
+  public static function createEdgeStorageApiClient(string $accessKey, string $baseUrl): EdgeStorageApiClient {
     $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
     $requestAdapter = new GuzzleRequestAdapter($authProvider);
+    $requestAdapter->setBaseUrl($baseUrl);
     return new EdgeStorageApiClient($requestAdapter);
   }
   
