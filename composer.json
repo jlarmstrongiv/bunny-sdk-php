@@ -2,6 +2,16 @@
     "name": "bunny-launcher/bunny-sdk",
     "description": "PHP SDK for bunny.net 🐰",
     "type": "library",
+    "keywords": [
+      "BunnyCDN",
+      "bunny.net",
+      "bunny",
+      "cdn",
+      "bunny-launcher",
+      "sdk",
+      "api"
+    ],
+    "homepage": "https://bunny-launcher.com/bunny-sdk/languages/php/",
     "require": {
         "php": "^8.0 || ^7.4",
         "microsoft/kiota-abstractions": "^1.4",
