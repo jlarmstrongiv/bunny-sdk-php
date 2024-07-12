@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "E1E5D5507E61CD5C3750804D5DC9EA6B0BD13AD0AAFB9BEA86073607A8E23534D316BD63DEF880F9777D02A6389028ADE30B940FF5556F6BFF5A00370D91F379",
+  "descriptionHash": "773F2FD2BA3BCAB4A107910BBB49D8DD0930E42070CBB60EBD06BC0248E9C0FF6044A8C95AD0BEA5998399BA5FC4ED761028E73851D9CBEE8B6CB8F53E7C14AE",
   "descriptionLocation": "../../../../tsp-output/@typespec/openapi3/openapi.LoggingApi.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.15.0",
+  "kiotaVersion": "1.16.0",
   "clientClassName": "LoggingApiClient",
   "clientNamespaceName": "LoggingApiClient",
   "language": "PHP",

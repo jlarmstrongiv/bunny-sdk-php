@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "F17F6C73029C4A2E0B89BE8591B15253112B5A39E4CD58CF4ED19DF60367934F00F5CECC3D79E22AC2C5A45F9B35335D75E871C02C53CFD4967DB0B5D17F75F1",
+  "descriptionHash": "F82594F77A7124BB88ECB00D115A293E9448F1ECC8B2324C53B1654F1ACAD3466B8FE39950875DBF67418B986E90A9DC26BCD0A498993953A080A9018B7CC4C0",
   "descriptionLocation": "../../../../tsp-output/@typespec/openapi3/openapi.StreamApi.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.15.0",
+  "kiotaVersion": "1.16.0",
   "clientClassName": "StreamApiClient",
   "clientNamespaceName": "StreamApiClient",
   "language": "PHP",

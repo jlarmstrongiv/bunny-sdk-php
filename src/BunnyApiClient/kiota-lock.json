@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "BCA2B2F68C9B5C77700675B1D00783C81DA1CEEDA0D3DB4E9702D7A1C2E825D0A2CEF393D723EC044884EEA500029B3F22E46AC3AA142304BAA50A432F63174B",
+  "descriptionHash": "B5E73491B7A6051EA1161DC6A2A82C6DCF23F6C8AA0CFB53B5D53C12F30EFEB103A91377CD2F1B6694D26EDD558D869DC0DA294D885FF5D1740E10BC79B136F6",
   "descriptionLocation": "../../../../tsp-output/@typespec/openapi3/openapi.BunnyApi.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.15.0",
+  "kiotaVersion": "1.16.0",
   "clientClassName": "BunnyApiClient",
   "clientNamespaceName": "BunnyApiClient",
   "language": "PHP",
