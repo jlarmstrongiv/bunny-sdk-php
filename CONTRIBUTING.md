@@ -20,6 +20,7 @@
 
 ## Updating
 
+- [Update dependencies](https://stackoverflow.com/a/73543352)
 - `composer install` or `composer update`
 - `composer dumpautoload`
 - `composer validate`
