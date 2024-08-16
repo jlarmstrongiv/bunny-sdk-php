@@ -10,4 +10,4 @@ composer require bunny-launcher/bunny-sdk
 
 ## Documentation
 
-Please read the [docs](https://bunny-launcher.com/bunny-sdk/languages/php/) for usage and examples.
+Please read the [docs](https://bunny-launcher.net/bunny-sdk/languages/php/) for usage and examples.

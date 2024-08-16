@@ -21,7 +21,7 @@ class StatisticsRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/statistics{?dateFrom*,dateTo*,hourly*,loadErrors*,pullZone*,serverZoneId*}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/statistics{?dateFrom,dateTo,hourly,loadErrors,pullZone,serverZoneId}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {

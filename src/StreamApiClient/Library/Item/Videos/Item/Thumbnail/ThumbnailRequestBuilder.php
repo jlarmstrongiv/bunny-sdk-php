@@ -22,7 +22,7 @@ class ThumbnailRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/library/{libraryId}/videos/{videoId}/thumbnail{?thumbnailUrl*}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/library/{libraryId}/videos/{videoId}/thumbnail{?thumbnailUrl}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {

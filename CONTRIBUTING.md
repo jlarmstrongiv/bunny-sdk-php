@@ -24,6 +24,7 @@
 - `composer install` or `composer update`
 - `composer dumpautoload`
 - `composer validate`
+- `BUNNY_ACCESS_KEY="***" php -f src/tests/Test.php`
 
 - `git add -A`
 - `git commit -m "message"`

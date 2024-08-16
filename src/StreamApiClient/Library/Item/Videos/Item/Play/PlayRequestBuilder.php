@@ -21,7 +21,7 @@ class PlayRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/library/{libraryId}/videos/{videoId}/play{?expires*,token*}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/library/{libraryId}/videos/{videoId}/play{?expires,token}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
