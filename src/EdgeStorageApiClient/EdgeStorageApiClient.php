@@ -21,7 +21,7 @@ class EdgeStorageApiClient extends BaseRequestBuilder
 {
     /**
      * Gets an item from the EdgeStorageApiClient.item collection
-     * @param string $storageZoneName the name of your storage zone where you are connecting to.
+     * @param string $storageZoneName The name of your storage zone where you are connecting to.
      * @return WithStorageZoneNameItemRequestBuilder
     */
     public function byStorageZoneName(string $storageZoneName): WithStorageZoneNameItemRequestBuilder {

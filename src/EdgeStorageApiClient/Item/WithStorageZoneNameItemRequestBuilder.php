@@ -3,8 +3,13 @@
 namespace EdgeStorageApiClient\Item;
 
 use EdgeStorageApiClient\Item\Item\WithPathItemRequestBuilder;
+use Exception;
+use Http\Promise\Promise;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
+use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
+use Microsoft\Kiota\Abstractions\RequestInformation;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Builds and executes requests for operations under /{storageZoneName}
@@ -34,6 +39,49 @@ class WithStorageZoneNameItemRequestBuilder extends BaseRequestBuilder
         } else {
             $this->pathParameters = ['request-raw-url' => $pathParametersOrRawUrl];
         }
+    }
+
+    /**
+     * [DownloadZip API Docs](https://toshy.github.io/BunnyNet-PHP/edge-storage-api/#download-zip)
+     * @param WithStorageZoneNamePostRequestBody $body The request body
+     * @param WithStorageZoneNameItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return Promise<StreamInterface|null>
+     * @throws Exception
+    */
+    public function post(WithStorageZoneNamePostRequestBody $body, ?WithStorageZoneNameItemRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
+        $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
+        /** @var Promise<StreamInterface|null> $result */
+        $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, null);
+        return $result;
+    }
+
+    /**
+     * [DownloadZip API Docs](https://toshy.github.io/BunnyNet-PHP/edge-storage-api/#download-zip)
+     * @param WithStorageZoneNamePostRequestBody $body The request body
+     * @param WithStorageZoneNameItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return RequestInformation
+    */
+    public function toPostRequestInformation(WithStorageZoneNamePostRequestBody $body, ?WithStorageZoneNameItemRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
+        $requestInfo = new RequestInformation();
+        $requestInfo->urlTemplate = $this->urlTemplate;
+        $requestInfo->pathParameters = $this->pathParameters;
+        $requestInfo->httpMethod = HttpMethod::POST;
+        if ($requestConfiguration !== null) {
+            $requestInfo->addHeaders($requestConfiguration->headers);
+            $requestInfo->addRequestOptions(...$requestConfiguration->options);
+        }
+        $requestInfo->tryAddHeader('Accept', "application/octet-stream");
+        $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
+        return $requestInfo;
+    }
+
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param string $rawUrl The raw URL to use for the request builder.
+     * @return WithStorageZoneNameItemRequestBuilder
+    */
+    public function withUrl(string $rawUrl): WithStorageZoneNameItemRequestBuilder {
+        return new WithStorageZoneNameItemRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

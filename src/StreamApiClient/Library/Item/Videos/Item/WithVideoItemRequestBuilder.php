@@ -14,6 +14,7 @@ use StreamApiClient\Library\Item\Videos\Item\Heatmap\HeatmapRequestBuilder;
 use StreamApiClient\Library\Item\Videos\Item\Play\PlayRequestBuilder;
 use StreamApiClient\Library\Item\Videos\Item\Reencode\ReencodeRequestBuilder;
 use StreamApiClient\Library\Item\Videos\Item\Repackage\RepackageRequestBuilder;
+use StreamApiClient\Library\Item\Videos\Item\Resolutions\ResolutionsRequestBuilder;
 use StreamApiClient\Library\Item\Videos\Item\Thumbnail\ThumbnailRequestBuilder;
 use StreamApiClient\Library\Item\Videos\Item\Transcribe\TranscribeRequestBuilder;
 use StreamApiClient\Models\ManageVideos\Video;
@@ -58,6 +59,13 @@ class WithVideoItemRequestBuilder extends BaseRequestBuilder
     */
     public function repackage(): RepackageRequestBuilder {
         return new RepackageRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The resolutions property
+    */
+    public function resolutions(): ResolutionsRequestBuilder {
+        return new ResolutionsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

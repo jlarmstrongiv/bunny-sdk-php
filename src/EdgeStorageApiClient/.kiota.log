@@ -1,0 +1,1 @@
+Error: KiotaBuilder OpenAPI error: #/servers/0/variables/region/default - The field 'default' in 'region' object is REQUIRED.

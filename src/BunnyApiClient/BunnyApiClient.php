@@ -4,6 +4,7 @@ namespace BunnyApiClient;
 
 use BunnyApiClient\Abusecase\AbusecaseRequestBuilder;
 use BunnyApiClient\Apikey\ApikeyRequestBuilder;
+use BunnyApiClient\Billing\BillingRequestBuilder;
 use BunnyApiClient\Compute\ComputeRequestBuilder;
 use BunnyApiClient\Country\CountryRequestBuilder;
 use BunnyApiClient\Dmca\DmcaRequestBuilder;
@@ -11,6 +12,7 @@ use BunnyApiClient\Dnszone\DnszoneRequestBuilder;
 use BunnyApiClient\Pullzone\PullzoneRequestBuilder;
 use BunnyApiClient\Purge\PurgeRequestBuilder;
 use BunnyApiClient\Region\RegionRequestBuilder;
+use BunnyApiClient\Search\SearchRequestBuilder;
 use BunnyApiClient\Statistics\StatisticsRequestBuilder;
 use BunnyApiClient\Storagezone\StoragezoneRequestBuilder;
 use BunnyApiClient\User\UserRequestBuilder;
@@ -43,6 +45,13 @@ class BunnyApiClient extends BaseRequestBuilder
     */
     public function apikey(): ApikeyRequestBuilder {
         return new ApikeyRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The billing property
+    */
+    public function billing(): BillingRequestBuilder {
+        return new BillingRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
@@ -92,6 +101,13 @@ class BunnyApiClient extends BaseRequestBuilder
     */
     public function region(): RegionRequestBuilder {
         return new RegionRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The search property
+    */
+    public function search(): SearchRequestBuilder {
+        return new SearchRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
