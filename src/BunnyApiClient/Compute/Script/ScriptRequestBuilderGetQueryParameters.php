@@ -8,6 +8,11 @@ namespace BunnyApiClient\Compute\Script;
 class ScriptRequestBuilderGetQueryParameters 
 {
     /**
+     * @var bool|null $includeLinkedPullZones 
+    */
+    public ?bool $includeLinkedPullZones = null;
+    
+    /**
      * @var int|null $page 
     */
     public ?int $page = null;
@@ -24,11 +29,13 @@ class ScriptRequestBuilderGetQueryParameters
     
     /**
      * Instantiates a new ScriptRequestBuilderGetQueryParameters and sets the default values.
+     * @param bool|null $includeLinkedPullZones 
      * @param int|null $page 
      * @param int|null $perPage 
      * @param string|null $search The search term that will be used to filter the results
     */
-    public function __construct(?int $page = null, ?int $perPage = null, ?string $search = null) {
+    public function __construct(?bool $includeLinkedPullZones = null, ?int $page = null, ?int $perPage = null, ?string $search = null) {
+        $this->includeLinkedPullZones = $includeLinkedPullZones;
         $this->page = $page;
         $this->perPage = $perPage;
         $this->search = $search;

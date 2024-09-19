@@ -28,13 +28,14 @@ class ScriptRequestBuilderGetRequestConfiguration extends BaseRequestConfigurati
 
     /**
      * Instantiates a new ScriptRequestBuilderGetQueryParameters.
+     * @param bool|null $includeLinkedPullZones 
      * @param int|null $page 
      * @param int|null $perPage 
      * @param string|null $search The search term that will be used to filter the results
      * @return ScriptRequestBuilderGetQueryParameters
     */
-    public static function createQueryParameters(?int $page = null, ?int $perPage = null, ?string $search = null): ScriptRequestBuilderGetQueryParameters {
-        return new ScriptRequestBuilderGetQueryParameters($page, $perPage, $search);
+    public static function createQueryParameters(?bool $includeLinkedPullZones = null, ?int $page = null, ?int $perPage = null, ?string $search = null): ScriptRequestBuilderGetQueryParameters {
+        return new ScriptRequestBuilderGetQueryParameters($includeLinkedPullZones, $page, $perPage, $search);
     }
 
 }

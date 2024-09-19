@@ -32,6 +32,11 @@ class Script implements AdditionalDataHolder, Parsable
     private ?bool $deleted = null;
     
     /**
+     * @var string|null $deploymentKey The DeploymentKey property
+    */
+    private ?string $deploymentKey = null;
+    
+    /**
      * @var array<EdgeScriptVariable>|null $edgeScriptVariables The EdgeScriptVariables property
     */
     private ?array $edgeScriptVariables = null;
@@ -40,6 +45,11 @@ class Script implements AdditionalDataHolder, Parsable
      * @var int|null $id The Id property
     */
     private ?int $id = null;
+    
+    /**
+     * @var bool|null $integrationEnabled The IntegrationEnabled property
+    */
+    private ?bool $integrationEnabled = null;
     
     /**
      * @var DateTime|null $lastModified The LastModified property
@@ -115,6 +125,14 @@ class Script implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the DeploymentKey property value. The DeploymentKey property
+     * @return string|null
+    */
+    public function getDeploymentKey(): ?string {
+        return $this->deploymentKey;
+    }
+
+    /**
      * Gets the EdgeScriptVariables property value. The EdgeScriptVariables property
      * @return array<EdgeScriptVariable>|null
     */
@@ -132,8 +150,10 @@ class Script implements AdditionalDataHolder, Parsable
             'CurrentReleaseId' => fn(ParseNode $n) => $o->setCurrentReleaseId($n->getIntegerValue()),
             'DefaultHostname' => fn(ParseNode $n) => $o->setDefaultHostname($n->getStringValue()),
             'Deleted' => fn(ParseNode $n) => $o->setDeleted($n->getBooleanValue()),
+            'DeploymentKey' => fn(ParseNode $n) => $o->setDeploymentKey($n->getStringValue()),
             'EdgeScriptVariables' => fn(ParseNode $n) => $o->setEdgeScriptVariables($n->getCollectionOfObjectValues([EdgeScriptVariable::class, 'createFromDiscriminatorValue'])),
             'Id' => fn(ParseNode $n) => $o->setId($n->getIntegerValue()),
+            'IntegrationEnabled' => fn(ParseNode $n) => $o->setIntegrationEnabled($n->getBooleanValue()),
             'LastModified' => fn(ParseNode $n) => $o->setLastModified($n->getDateTimeValue()),
             'LinkedPullZones' => fn(ParseNode $n) => $o->setLinkedPullZones($n->getCollectionOfObjectValues([PullZone::class, 'createFromDiscriminatorValue'])),
             'Name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
@@ -148,6 +168,14 @@ class Script implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?int {
         return $this->id;
+    }
+
+    /**
+     * Gets the IntegrationEnabled property value. The IntegrationEnabled property
+     * @return bool|null
+    */
+    public function getIntegrationEnabled(): ?bool {
+        return $this->integrationEnabled;
     }
 
     /**
@@ -233,6 +261,14 @@ class Script implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the DeploymentKey property value. The DeploymentKey property
+     * @param string|null $value Value to set for the DeploymentKey property.
+    */
+    public function setDeploymentKey(?string $value): void {
+        $this->deploymentKey = $value;
+    }
+
+    /**
      * Sets the EdgeScriptVariables property value. The EdgeScriptVariables property
      * @param array<EdgeScriptVariable>|null $value Value to set for the EdgeScriptVariables property.
     */
@@ -246,6 +282,14 @@ class Script implements AdditionalDataHolder, Parsable
     */
     public function setId(?int $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the IntegrationEnabled property value. The IntegrationEnabled property
+     * @param bool|null $value Value to set for the IntegrationEnabled property.
+    */
+    public function setIntegrationEnabled(?bool $value): void {
+        $this->integrationEnabled = $value;
     }
 
     /**
