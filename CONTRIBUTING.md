@@ -20,7 +20,7 @@
 
 ## Updating
 
-- [Update dependencies](https://stackoverflow.com/a/73543352)
+- [Update dependencies](https://stackoverflow.com/a/73543352), but ensure patch versions are used.
 - `composer install` or `composer update`
 - `composer dumpautoload`
 - `composer validate`

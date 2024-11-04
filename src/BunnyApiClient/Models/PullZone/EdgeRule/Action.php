@@ -20,6 +20,11 @@ class Action implements AdditionalDataHolder, Parsable
     private ?string $actionParameter2 = null;
     
     /**
+     * @var string|null $actionParameter3 The ActionParameter3 property
+    */
+    private ?string $actionParameter3 = null;
+    
+    /**
      * @var float|null $actionType The ActionType property
     */
     private ?float $actionType = null;
@@ -62,6 +67,14 @@ class Action implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the ActionParameter3 property value. The ActionParameter3 property
+     * @return string|null
+    */
+    public function getActionParameter3(): ?string {
+        return $this->actionParameter3;
+    }
+
+    /**
      * Gets the ActionType property value. The ActionType property
      * @return float|null
     */
@@ -86,6 +99,7 @@ class Action implements AdditionalDataHolder, Parsable
         return  [
             'ActionParameter1' => fn(ParseNode $n) => $o->setActionParameter1($n->getStringValue()),
             'ActionParameter2' => fn(ParseNode $n) => $o->setActionParameter2($n->getStringValue()),
+            'ActionParameter3' => fn(ParseNode $n) => $o->setActionParameter3($n->getStringValue()),
             'ActionType' => fn(ParseNode $n) => $o->setActionType($n->getFloatValue()),
         ];
     }
@@ -97,6 +111,7 @@ class Action implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('ActionParameter1', $this->getActionParameter1());
         $writer->writeStringValue('ActionParameter2', $this->getActionParameter2());
+        $writer->writeStringValue('ActionParameter3', $this->getActionParameter3());
         $writer->writeFloatValue('ActionType', $this->getActionType());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -115,6 +130,14 @@ class Action implements AdditionalDataHolder, Parsable
     */
     public function setActionParameter2(?string $value): void {
         $this->actionParameter2 = $value;
+    }
+
+    /**
+     * Sets the ActionParameter3 property value. The ActionParameter3 property
+     * @param string|null $value Value to set for the ActionParameter3 property.
+    */
+    public function setActionParameter3(?string $value): void {
+        $this->actionParameter3 = $value;
     }
 
     /**

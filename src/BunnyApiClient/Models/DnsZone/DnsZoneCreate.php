@@ -1,16 +1,13 @@
 <?php
 
-namespace BunnyApiClient\Dnszone\Item;
+namespace BunnyApiClient\Models\DnsZone;
 
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-/**
- * The template for adding optional properties.
-*/
-class PostRequestBody implements AdditionalDataHolder, Parsable 
+class DnsZoneCreate implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -53,7 +50,7 @@ class PostRequestBody implements AdditionalDataHolder, Parsable
     private ?string $soaEmail = null;
     
     /**
-     * Instantiates a new PostRequestBody and sets the default values.
+     * Instantiates a new DnsZoneCreate and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -62,10 +59,10 @@ class PostRequestBody implements AdditionalDataHolder, Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return PostRequestBody
+     * @return DnsZoneCreate
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): PostRequestBody {
-        return new PostRequestBody();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): DnsZoneCreate {
+        return new DnsZoneCreate();
     }
 
     /**

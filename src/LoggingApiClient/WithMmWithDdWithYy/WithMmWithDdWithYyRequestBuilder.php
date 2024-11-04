@@ -15,11 +15,11 @@ class WithMmWithDdWithYyRequestBuilder extends BaseRequestBuilder
      * Instantiates a new WithMmWithDdWithYyRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
-     * @param int|null $dd The path parameter: dd
-     * @param int|null $mm The path parameter: mm
-     * @param int|null $yy The path parameter: yy
+     * @param string|null $dd The path parameter: dd
+     * @param string|null $mm The path parameter: mm
+     * @param string|null $yy The path parameter: yy
     */
-    public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter, ?int $dd = null, ?int $mm = null, ?int $yy = null) {
+    public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter, ?string $dd = null, ?string $mm = null, ?string $yy = null) {
         parent::__construct($requestAdapter, [], '{+baseurl}/{mm}-{dd}-{yy}');
         if (is_array($pathParametersOrRawUrl)) {
             $urlTplParams = $pathParametersOrRawUrl;

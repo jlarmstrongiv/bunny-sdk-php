@@ -2,7 +2,6 @@
 
 namespace BunnyApiClient\Models\Compute;
 
-use BunnyApiClient\Models\PullZone\PullZone;
 use DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
@@ -47,9 +46,14 @@ class Script implements AdditionalDataHolder, Parsable
     private ?int $id = null;
     
     /**
-     * @var bool|null $integrationEnabled The IntegrationEnabled property
+     * @var Integration|null $integration The Integration property
     */
-    private ?bool $integrationEnabled = null;
+    private ?Integration $integration = null;
+    
+    /**
+     * @var int|null $integrationId The IntegrationId property
+    */
+    private ?int $integrationId = null;
     
     /**
      * @var DateTime|null $lastModified The LastModified property
@@ -57,14 +61,34 @@ class Script implements AdditionalDataHolder, Parsable
     private ?DateTime $lastModified = null;
     
     /**
-     * @var array<PullZone>|null $linkedPullZones The LinkedPullZones property
+     * @var array<LinkedPullZone>|null $linkedPullZones The LinkedPullZones property
     */
     private ?array $linkedPullZones = null;
+    
+    /**
+     * @var float|null $monthlyCost The MonthlyCost property
+    */
+    private ?float $monthlyCost = null;
+    
+    /**
+     * @var int|null $monthlyCpuTime The MonthlyCpuTime property
+    */
+    private ?int $monthlyCpuTime = null;
+    
+    /**
+     * @var int|null $monthlyRequestCount The MonthlyRequestCount property
+    */
+    private ?int $monthlyRequestCount = null;
     
     /**
      * @var string|null $name The Name property
     */
     private ?string $name = null;
+    
+    /**
+     * @var int|null $repositoryId The RepositoryId property
+    */
+    private ?int $repositoryId = null;
     
     /**
      * @var float|null $scriptType The ScriptType property
@@ -153,10 +177,15 @@ class Script implements AdditionalDataHolder, Parsable
             'DeploymentKey' => fn(ParseNode $n) => $o->setDeploymentKey($n->getStringValue()),
             'EdgeScriptVariables' => fn(ParseNode $n) => $o->setEdgeScriptVariables($n->getCollectionOfObjectValues([EdgeScriptVariable::class, 'createFromDiscriminatorValue'])),
             'Id' => fn(ParseNode $n) => $o->setId($n->getIntegerValue()),
-            'IntegrationEnabled' => fn(ParseNode $n) => $o->setIntegrationEnabled($n->getBooleanValue()),
+            'Integration' => fn(ParseNode $n) => $o->setIntegration($n->getObjectValue([Integration::class, 'createFromDiscriminatorValue'])),
+            'IntegrationId' => fn(ParseNode $n) => $o->setIntegrationId($n->getIntegerValue()),
             'LastModified' => fn(ParseNode $n) => $o->setLastModified($n->getDateTimeValue()),
-            'LinkedPullZones' => fn(ParseNode $n) => $o->setLinkedPullZones($n->getCollectionOfObjectValues([PullZone::class, 'createFromDiscriminatorValue'])),
+            'LinkedPullZones' => fn(ParseNode $n) => $o->setLinkedPullZones($n->getCollectionOfObjectValues([LinkedPullZone::class, 'createFromDiscriminatorValue'])),
+            'MonthlyCost' => fn(ParseNode $n) => $o->setMonthlyCost($n->getFloatValue()),
+            'MonthlyCpuTime' => fn(ParseNode $n) => $o->setMonthlyCpuTime($n->getIntegerValue()),
+            'MonthlyRequestCount' => fn(ParseNode $n) => $o->setMonthlyRequestCount($n->getIntegerValue()),
             'Name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'RepositoryId' => fn(ParseNode $n) => $o->setRepositoryId($n->getIntegerValue()),
             'ScriptType' => fn(ParseNode $n) => $o->setScriptType($n->getFloatValue()),
             'SystemHostname' => fn(ParseNode $n) => $o->setSystemHostname($n->getStringValue()),
         ];
@@ -171,11 +200,19 @@ class Script implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the IntegrationEnabled property value. The IntegrationEnabled property
-     * @return bool|null
+     * Gets the Integration property value. The Integration property
+     * @return Integration|null
     */
-    public function getIntegrationEnabled(): ?bool {
-        return $this->integrationEnabled;
+    public function getIntegration(): ?Integration {
+        return $this->integration;
+    }
+
+    /**
+     * Gets the IntegrationId property value. The IntegrationId property
+     * @return int|null
+    */
+    public function getIntegrationId(): ?int {
+        return $this->integrationId;
     }
 
     /**
@@ -188,10 +225,34 @@ class Script implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the LinkedPullZones property value. The LinkedPullZones property
-     * @return array<PullZone>|null
+     * @return array<LinkedPullZone>|null
     */
     public function getLinkedPullZones(): ?array {
         return $this->linkedPullZones;
+    }
+
+    /**
+     * Gets the MonthlyCost property value. The MonthlyCost property
+     * @return float|null
+    */
+    public function getMonthlyCost(): ?float {
+        return $this->monthlyCost;
+    }
+
+    /**
+     * Gets the MonthlyCpuTime property value. The MonthlyCpuTime property
+     * @return int|null
+    */
+    public function getMonthlyCpuTime(): ?int {
+        return $this->monthlyCpuTime;
+    }
+
+    /**
+     * Gets the MonthlyRequestCount property value. The MonthlyRequestCount property
+     * @return int|null
+    */
+    public function getMonthlyRequestCount(): ?int {
+        return $this->monthlyRequestCount;
     }
 
     /**
@@ -200,6 +261,14 @@ class Script implements AdditionalDataHolder, Parsable
     */
     public function getName(): ?string {
         return $this->name;
+    }
+
+    /**
+     * Gets the RepositoryId property value. The RepositoryId property
+     * @return int|null
+    */
+    public function getRepositoryId(): ?int {
+        return $this->repositoryId;
     }
 
     /**
@@ -223,6 +292,7 @@ class Script implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeObjectValue('Integration', $this->getIntegration());
         $writer->writeStringValue('Name', $this->getName());
         $writer->writeFloatValue('ScriptType', $this->getScriptType());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -285,11 +355,19 @@ class Script implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the IntegrationEnabled property value. The IntegrationEnabled property
-     * @param bool|null $value Value to set for the IntegrationEnabled property.
+     * Sets the Integration property value. The Integration property
+     * @param Integration|null $value Value to set for the Integration property.
     */
-    public function setIntegrationEnabled(?bool $value): void {
-        $this->integrationEnabled = $value;
+    public function setIntegration(?Integration $value): void {
+        $this->integration = $value;
+    }
+
+    /**
+     * Sets the IntegrationId property value. The IntegrationId property
+     * @param int|null $value Value to set for the IntegrationId property.
+    */
+    public function setIntegrationId(?int $value): void {
+        $this->integrationId = $value;
     }
 
     /**
@@ -302,10 +380,34 @@ class Script implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the LinkedPullZones property value. The LinkedPullZones property
-     * @param array<PullZone>|null $value Value to set for the LinkedPullZones property.
+     * @param array<LinkedPullZone>|null $value Value to set for the LinkedPullZones property.
     */
     public function setLinkedPullZones(?array $value): void {
         $this->linkedPullZones = $value;
+    }
+
+    /**
+     * Sets the MonthlyCost property value. The MonthlyCost property
+     * @param float|null $value Value to set for the MonthlyCost property.
+    */
+    public function setMonthlyCost(?float $value): void {
+        $this->monthlyCost = $value;
+    }
+
+    /**
+     * Sets the MonthlyCpuTime property value. The MonthlyCpuTime property
+     * @param int|null $value Value to set for the MonthlyCpuTime property.
+    */
+    public function setMonthlyCpuTime(?int $value): void {
+        $this->monthlyCpuTime = $value;
+    }
+
+    /**
+     * Sets the MonthlyRequestCount property value. The MonthlyRequestCount property
+     * @param int|null $value Value to set for the MonthlyRequestCount property.
+    */
+    public function setMonthlyRequestCount(?int $value): void {
+        $this->monthlyRequestCount = $value;
     }
 
     /**
@@ -314,6 +416,14 @@ class Script implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the RepositoryId property value. The RepositoryId property
+     * @param int|null $value Value to set for the RepositoryId property.
+    */
+    public function setRepositoryId(?int $value): void {
+        $this->repositoryId = $value;
     }
 
     /**

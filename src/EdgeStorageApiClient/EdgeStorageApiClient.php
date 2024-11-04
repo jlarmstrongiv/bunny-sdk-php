@@ -3,6 +3,7 @@
 namespace EdgeStorageApiClient;
 
 use EdgeStorageApiClient\Item\WithStorageZoneNameItemRequestBuilder;
+use EdgeStorageApiClient\Item\WithStorageZoneNameSlashRequestBuilder;
 use Microsoft\Kiota\Abstractions\ApiClientBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -21,7 +22,7 @@ class EdgeStorageApiClient extends BaseRequestBuilder
 {
     /**
      * Gets an item from the EdgeStorageApiClient.item collection
-     * @param string $storageZoneName The name of your storage zone where you are connecting to.
+     * @param string $storageZoneName the name of your storage zone where you are connecting to.
      * @return WithStorageZoneNameItemRequestBuilder
     */
     public function byStorageZoneName(string $storageZoneName): WithStorageZoneNameItemRequestBuilder {
@@ -47,6 +48,15 @@ class EdgeStorageApiClient extends BaseRequestBuilder
             $this->requestAdapter->setBaseUrl('https://{region}.bunnycdn.com');
         }
         $this->pathParameters['baseurl'] = $this->requestAdapter->getBaseUrl();
+    }
+
+    /**
+     * Builds and executes requests for operations under /{storageZoneName}/
+     * @param string $storageZoneName The name of your storage zone where you are connecting to.
+     * @return WithStorageZoneNameSlashRequestBuilder
+    */
+    public function withStorageZoneNameSlash(string $storageZoneName): WithStorageZoneNameSlashRequestBuilder {
+        return new WithStorageZoneNameSlashRequestBuilder($this->pathParameters, $this->requestAdapter, $storageZoneName);
     }
 
 }

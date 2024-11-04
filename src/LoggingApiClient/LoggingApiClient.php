@@ -40,12 +40,12 @@ class LoggingApiClient extends BaseRequestBuilder
 
     /**
      * Builds and executes requests for operations under /{mm}-{dd}-{yy}
-     * @param int $dd The path parameter: dd
-     * @param int $mm The path parameter: mm
-     * @param int $yy The path parameter: yy
+     * @param string $dd The path parameter: dd
+     * @param string $mm The path parameter: mm
+     * @param string $yy The path parameter: yy
      * @return WithMmWithDdWithYyRequestBuilder
     */
-    public function withMmWithDdWithYy(int $dd, int $mm, int $yy): WithMmWithDdWithYyRequestBuilder {
+    public function withMmWithDdWithYy(string $dd, string $mm, string $yy): WithMmWithDdWithYyRequestBuilder {
         return new WithMmWithDdWithYyRequestBuilder($this->pathParameters, $this->requestAdapter, $dd, $mm, $yy);
     }
 

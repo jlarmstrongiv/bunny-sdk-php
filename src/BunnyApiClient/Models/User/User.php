@@ -42,6 +42,11 @@ class User implements AdditionalDataHolder, Parsable
     private ?float $billingType = null;
     
     /**
+     * @var bool|null $cardVerified The CardVerified property
+    */
+    private ?bool $cardVerified = null;
+    
+    /**
      * @var string|null $city The city of the user
     */
     private ?string $city = null;
@@ -162,6 +167,11 @@ class User implements AdditionalDataHolder, Parsable
     private ?int $totalBandwidthUsed = null;
     
     /**
+     * @var float|null $trialBalance The TrialBalance property
+    */
+    private ?float $trialBalance = null;
+    
+    /**
      * @var int|null $trialBandwidthLimit The total free trial bandwidth limit for this account
     */
     private ?int $trialBandwidthLimit = null;
@@ -248,6 +258,14 @@ class User implements AdditionalDataHolder, Parsable
     */
     public function getBillingType(): ?float {
         return $this->billingType;
+    }
+
+    /**
+     * Gets the CardVerified property value. The CardVerified property
+     * @return bool|null
+    */
+    public function getCardVerified(): ?bool {
+        return $this->cardVerified;
     }
 
     /**
@@ -350,6 +368,7 @@ class User implements AdditionalDataHolder, Parsable
             'BillingEmail' => fn(ParseNode $n) => $o->setBillingEmail($n->getStringValue()),
             'BillingFreeUntilDate' => fn(ParseNode $n) => $o->setBillingFreeUntilDate($n->getDateTimeValue()),
             'BillingType' => fn(ParseNode $n) => $o->setBillingType($n->getFloatValue()),
+            'CardVerified' => fn(ParseNode $n) => $o->setCardVerified($n->getBooleanValue()),
             'City' => fn(ParseNode $n) => $o->setCity($n->getStringValue()),
             'CompanyName' => fn(ParseNode $n) => $o->setCompanyName($n->getStringValue()),
             'Country' => fn(ParseNode $n) => $o->setCountry($n->getStringValue()),
@@ -395,6 +414,7 @@ class User implements AdditionalDataHolder, Parsable
             'StreetAddress' => fn(ParseNode $n) => $o->setStreetAddress($n->getStringValue()),
             'Suspended' => fn(ParseNode $n) => $o->setSuspended($n->getBooleanValue()),
             'TotalBandwidthUsed' => fn(ParseNode $n) => $o->setTotalBandwidthUsed($n->getIntegerValue()),
+            'TrialBalance' => fn(ParseNode $n) => $o->setTrialBalance($n->getFloatValue()),
             'TrialBandwidthLimit' => fn(ParseNode $n) => $o->setTrialBandwidthLimit($n->getIntegerValue()),
             'TwoFactorAuthenticationEnabled' => fn(ParseNode $n) => $o->setTwoFactorAuthenticationEnabled($n->getBooleanValue()),
             'UnreadSupportTicketCount' => fn(ParseNode $n) => $o->setUnreadSupportTicketCount($n->getIntegerValue()),
@@ -508,6 +528,14 @@ class User implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the TrialBalance property value. The TrialBalance property
+     * @return float|null
+    */
+    public function getTrialBalance(): ?float {
+        return $this->trialBalance;
+    }
+
+    /**
      * Gets the TrialBandwidthLimit property value. The total free trial bandwidth limit for this account
      * @return int|null
     */
@@ -557,6 +585,7 @@ class User implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('BillingEmail', $this->getBillingEmail());
         $writer->writeDateTimeValue('BillingFreeUntilDate', $this->getBillingFreeUntilDate());
         $writer->writeFloatValue('BillingType', $this->getBillingType());
+        $writer->writeBooleanValue('CardVerified', $this->getCardVerified());
         $writer->writeStringValue('City', $this->getCity());
         $writer->writeStringValue('CompanyName', $this->getCompanyName());
         $writer->writeStringValue('Country', $this->getCountry());
@@ -581,6 +610,7 @@ class User implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('StreetAddress', $this->getStreetAddress());
         $writer->writeBooleanValue('Suspended', $this->getSuspended());
         $writer->writeIntegerValue('TotalBandwidthUsed', $this->getTotalBandwidthUsed());
+        $writer->writeFloatValue('TrialBalance', $this->getTrialBalance());
         $writer->writeIntegerValue('TrialBandwidthLimit', $this->getTrialBandwidthLimit());
         $writer->writeBooleanValue('TwoFactorAuthenticationEnabled', $this->getTwoFactorAuthenticationEnabled());
         $writer->writeIntegerValue('UnreadSupportTicketCount', $this->getUnreadSupportTicketCount());
@@ -635,6 +665,14 @@ class User implements AdditionalDataHolder, Parsable
     */
     public function setBillingType(?float $value): void {
         $this->billingType = $value;
+    }
+
+    /**
+     * Sets the CardVerified property value. The CardVerified property
+     * @param bool|null $value Value to set for the CardVerified property.
+    */
+    public function setCardVerified(?bool $value): void {
+        $this->cardVerified = $value;
     }
 
     /**
@@ -827,6 +865,14 @@ class User implements AdditionalDataHolder, Parsable
     */
     public function setTotalBandwidthUsed(?int $value): void {
         $this->totalBandwidthUsed = $value;
+    }
+
+    /**
+     * Sets the TrialBalance property value. The TrialBalance property
+     * @param float|null $value Value to set for the TrialBalance property.
+    */
+    public function setTrialBalance(?float $value): void {
+        $this->trialBalance = $value;
     }
 
     /**

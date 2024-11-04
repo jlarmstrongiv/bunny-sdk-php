@@ -15,26 +15,26 @@ class BunnySdk {
   private function __construct() {}
 
   public static function createBunnyApiClient(string $accessKey): BunnyApiClient {
-    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
+    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "accesskey");
     $requestAdapter = new GuzzleRequestAdapter($authProvider);
     return new BunnyApiClient($requestAdapter);
   }
   
   public static function createEdgeStorageApiClient(string $accessKey, string $baseUrl): EdgeStorageApiClient {
-    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
+    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "accesskey");
     $requestAdapter = new GuzzleRequestAdapter($authProvider);
     $requestAdapter->setBaseUrl($baseUrl);
     return new EdgeStorageApiClient($requestAdapter);
   }
   
   public static function createStreamApiClient(string $accessKey): StreamApiClient {
-    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
+    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "accesskey");
     $requestAdapter = new GuzzleRequestAdapter($authProvider);
     return new StreamApiClient($requestAdapter);
   }
   
   public static function createLoggingApiClient(string $accessKey): LoggingApiClient {
-    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "AccessKey");
+    $authProvider = new ApiKeyAuthenticationProvider(KeyLocation::Header, $accessKey, "accesskey");
     $requestAdapter = new GuzzleRequestAdapter($authProvider);
     return new LoggingApiClient($requestAdapter);
   }

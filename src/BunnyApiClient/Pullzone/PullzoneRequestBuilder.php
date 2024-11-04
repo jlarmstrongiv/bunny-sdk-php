@@ -7,6 +7,8 @@ use BunnyApiClient\Models\PullZone\PullZoneCreate;
 use BunnyApiClient\Pullzone\Checkavailability\CheckavailabilityRequestBuilder;
 use BunnyApiClient\Pullzone\Item\ItemRequestBuilder;
 use BunnyApiClient\Pullzone\LoadFreeCertificate\LoadFreeCertificateRequestBuilder;
+use BunnyApiClient\Pullzone\SetZoneSecurityEnabled\SetZoneSecurityEnabledRequestBuilder;
+use BunnyApiClient\Pullzone\SetZoneSecurityIncludeHashRemoteIPEnabled\SetZoneSecurityIncludeHashRemoteIPEnabledRequestBuilder;
 use Exception;
 use Http\Promise\Promise;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -31,6 +33,20 @@ class PullzoneRequestBuilder extends BaseRequestBuilder
     */
     public function loadFreeCertificate(): LoadFreeCertificateRequestBuilder {
         return new LoadFreeCertificateRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The setZoneSecurityEnabled property
+    */
+    public function setZoneSecurityEnabled(): SetZoneSecurityEnabledRequestBuilder {
+        return new SetZoneSecurityEnabledRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The setZoneSecurityIncludeHashRemoteIPEnabled property
+    */
+    public function setZoneSecurityIncludeHashRemoteIPEnabled(): SetZoneSecurityIncludeHashRemoteIPEnabledRequestBuilder {
+        return new SetZoneSecurityIncludeHashRemoteIPEnabledRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

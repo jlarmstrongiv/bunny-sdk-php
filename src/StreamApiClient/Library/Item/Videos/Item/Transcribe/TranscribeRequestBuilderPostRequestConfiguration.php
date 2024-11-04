@@ -29,7 +29,7 @@ class TranscribeRequestBuilderPostRequestConfiguration extends BaseRequestConfig
     /**
      * Instantiates a new TranscribeRequestBuilderPostQueryParameters.
      * @param bool|null $force 
-     * @param string|null $language 
+     * @param string|null $language Video source language, use ISO 639-1 language code
      * @return TranscribeRequestBuilderPostQueryParameters
     */
     public static function createQueryParameters(?bool $force = null, ?string $language = null): TranscribeRequestBuilderPostQueryParameters {

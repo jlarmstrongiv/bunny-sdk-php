@@ -9,10 +9,12 @@ use BunnyApiClient\Compute\ComputeRequestBuilder;
 use BunnyApiClient\Country\CountryRequestBuilder;
 use BunnyApiClient\Dmca\DmcaRequestBuilder;
 use BunnyApiClient\Dnszone\DnszoneRequestBuilder;
+use BunnyApiClient\Integration\IntegrationRequestBuilder;
 use BunnyApiClient\Pullzone\PullzoneRequestBuilder;
 use BunnyApiClient\Purge\PurgeRequestBuilder;
 use BunnyApiClient\Region\RegionRequestBuilder;
 use BunnyApiClient\Search\SearchRequestBuilder;
+use BunnyApiClient\Shield\ShieldRequestBuilder;
 use BunnyApiClient\Statistics\StatisticsRequestBuilder;
 use BunnyApiClient\Storagezone\StoragezoneRequestBuilder;
 use BunnyApiClient\User\UserRequestBuilder;
@@ -83,6 +85,13 @@ class BunnyApiClient extends BaseRequestBuilder
     }
     
     /**
+     * The integration property
+    */
+    public function integration(): IntegrationRequestBuilder {
+        return new IntegrationRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * The pullzone property
     */
     public function pullzone(): PullzoneRequestBuilder {
@@ -108,6 +117,13 @@ class BunnyApiClient extends BaseRequestBuilder
     */
     public function search(): SearchRequestBuilder {
         return new SearchRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The shield property
+    */
+    public function shield(): ShieldRequestBuilder {
+        return new ShieldRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

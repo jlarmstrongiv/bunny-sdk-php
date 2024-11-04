@@ -20,6 +20,11 @@ class EdgeRule implements AdditionalDataHolder, Parsable
     private ?string $actionParameter2 = null;
     
     /**
+     * @var string|null $actionParameter3 The Action parameter 3. The value depends on other parameters of the edge rule.
+    */
+    private ?string $actionParameter3 = null;
+    
+    /**
      * @var float|null $actionType The ActionType property
     */
     private ?float $actionType = null;
@@ -48,6 +53,11 @@ class EdgeRule implements AdditionalDataHolder, Parsable
      * @var string|null $guid The unique GUID of the edge rule
     */
     private ?string $guid = null;
+    
+    /**
+     * @var int|null $orderIndex The OrderIndex property
+    */
+    private ?int $orderIndex = null;
     
     /**
      * @var float|null $triggerMatchingType The TriggerMatchingType property
@@ -89,6 +99,14 @@ class EdgeRule implements AdditionalDataHolder, Parsable
     */
     public function getActionParameter2(): ?string {
         return $this->actionParameter2;
+    }
+
+    /**
+     * Gets the ActionParameter3 property value. The Action parameter 3. The value depends on other parameters of the edge rule.
+     * @return string|null
+    */
+    public function getActionParameter3(): ?string {
+        return $this->actionParameter3;
     }
 
     /**
@@ -140,11 +158,13 @@ class EdgeRule implements AdditionalDataHolder, Parsable
         return  [
             'ActionParameter1' => fn(ParseNode $n) => $o->setActionParameter1($n->getStringValue()),
             'ActionParameter2' => fn(ParseNode $n) => $o->setActionParameter2($n->getStringValue()),
+            'ActionParameter3' => fn(ParseNode $n) => $o->setActionParameter3($n->getStringValue()),
             'ActionType' => fn(ParseNode $n) => $o->setActionType($n->getFloatValue()),
             'Description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'Enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'ExtraActions' => fn(ParseNode $n) => $o->setExtraActions($n->getCollectionOfObjectValues([Action::class, 'createFromDiscriminatorValue'])),
             'Guid' => fn(ParseNode $n) => $o->setGuid($n->getStringValue()),
+            'OrderIndex' => fn(ParseNode $n) => $o->setOrderIndex($n->getIntegerValue()),
             'TriggerMatchingType' => fn(ParseNode $n) => $o->setTriggerMatchingType($n->getFloatValue()),
             'Triggers' => fn(ParseNode $n) => $o->setTriggers($n->getCollectionOfObjectValues([Trigger::class, 'createFromDiscriminatorValue'])),
         ];
@@ -156,6 +176,14 @@ class EdgeRule implements AdditionalDataHolder, Parsable
     */
     public function getGuid(): ?string {
         return $this->guid;
+    }
+
+    /**
+     * Gets the OrderIndex property value. The OrderIndex property
+     * @return int|null
+    */
+    public function getOrderIndex(): ?int {
+        return $this->orderIndex;
     }
 
     /**
@@ -181,11 +209,12 @@ class EdgeRule implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('ActionParameter1', $this->getActionParameter1());
         $writer->writeStringValue('ActionParameter2', $this->getActionParameter2());
+        $writer->writeStringValue('ActionParameter3', $this->getActionParameter3());
         $writer->writeFloatValue('ActionType', $this->getActionType());
         $writer->writeStringValue('Description', $this->getDescription());
         $writer->writeBooleanValue('Enabled', $this->getEnabled());
         $writer->writeCollectionOfObjectValues('ExtraActions', $this->getExtraActions());
-        $writer->writeStringValue('Guid', $this->getGuid());
+        $writer->writeIntegerValue('OrderIndex', $this->getOrderIndex());
         $writer->writeFloatValue('TriggerMatchingType', $this->getTriggerMatchingType());
         $writer->writeCollectionOfObjectValues('Triggers', $this->getTriggers());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -205,6 +234,14 @@ class EdgeRule implements AdditionalDataHolder, Parsable
     */
     public function setActionParameter2(?string $value): void {
         $this->actionParameter2 = $value;
+    }
+
+    /**
+     * Sets the ActionParameter3 property value. The Action parameter 3. The value depends on other parameters of the edge rule.
+     * @param string|null $value Value to set for the ActionParameter3 property.
+    */
+    public function setActionParameter3(?string $value): void {
+        $this->actionParameter3 = $value;
     }
 
     /**
@@ -253,6 +290,14 @@ class EdgeRule implements AdditionalDataHolder, Parsable
     */
     public function setGuid(?string $value): void {
         $this->guid = $value;
+    }
+
+    /**
+     * Sets the OrderIndex property value. The OrderIndex property
+     * @param int|null $value Value to set for the OrderIndex property.
+    */
+    public function setOrderIndex(?int $value): void {
+        $this->orderIndex = $value;
     }
 
     /**

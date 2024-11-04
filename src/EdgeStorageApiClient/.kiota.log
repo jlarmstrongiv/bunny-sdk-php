@@ -1,1 +1,4 @@
-Error: KiotaBuilder OpenAPI error: #/servers/0/variables/region/default - The field 'default' in 'region' object is REQUIRED.
+Error: KiotaBuilder OpenAPI error: #/paths/~1{storageZoneName}~1{+path}~1/get/parameters/1/in - Declared path parameter "path" needs to be defined as a path parameter at either the path or operation level
+Error: KiotaBuilder OpenAPI error: #/paths/~1{storageZoneName}~1{+path}~1{fileName}/get/parameters/1/in - Declared path parameter "path" needs to be defined as a path parameter at either the path or operation level
+Error: KiotaBuilder OpenAPI error: #/paths/~1{storageZoneName}~1{+path}~1{fileName}/put/parameters/1/in - Declared path parameter "path" needs to be defined as a path parameter at either the path or operation level
+Error: KiotaBuilder OpenAPI error: #/paths/~1{storageZoneName}~1{+path}~1{fileName}/delete/parameters/1/in - Declared path parameter "path" needs to be defined as a path parameter at either the path or operation level

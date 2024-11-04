@@ -1,6 +1,6 @@
 <?php
 
-namespace EdgeStorageApiClient\Item;
+namespace BunnyApiClient\Shield\ShieldZone;
 
 use Microsoft\Kiota\Abstractions\BaseRequestConfiguration;
 use Microsoft\Kiota\Abstractions\RequestOption;
@@ -8,10 +8,10 @@ use Microsoft\Kiota\Abstractions\RequestOption;
 /**
  * Configuration for the request such as headers, query parameters, and middleware options.
 */
-class WithStorageZoneNameItemRequestBuilderPostRequestConfiguration extends BaseRequestConfiguration 
+class ShieldZoneRequestBuilderPatchRequestConfiguration extends BaseRequestConfiguration 
 {
     /**
-     * Instantiates a new WithStorageZoneNameItemRequestBuilderPostRequestConfiguration and sets the default values.
+     * Instantiates a new ShieldZoneRequestBuilderPatchRequestConfiguration and sets the default values.
      * @param array<string, array<string>|string>|null $headers Request headers
      * @param array<RequestOption>|null $options Request options
     */

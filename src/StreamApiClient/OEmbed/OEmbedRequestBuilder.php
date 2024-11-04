@@ -20,7 +20,7 @@ class OEmbedRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/OEmbed?expires={expires}{&maxHeight,maxWidth,token,url}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/OEmbed?expires={expires}&url={url}{&maxHeight,maxWidth,token}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {

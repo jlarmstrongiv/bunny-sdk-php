@@ -483,6 +483,11 @@ class PullZone implements AdditionalDataHolder, Parsable
     private ?bool $optimizerEnableManipulationEngine = null;
     
     /**
+     * @var bool|null $optimizerEnableUpscaling The OptimizerEnableUpscaling property
+    */
+    private ?bool $optimizerEnableUpscaling = null;
+    
+    /**
      * @var bool|null $optimizerEnableWebP Determines if the WebP optimization should be enabled
     */
     private ?bool $optimizerEnableWebP = null;
@@ -518,6 +523,11 @@ class PullZone implements AdditionalDataHolder, Parsable
     private ?int $optimizerMobileMaxWidth = null;
     
     /**
+     * @var float|null $optimizerPricing The OptimizerPricing property
+    */
+    private ?float $optimizerPricing = null;
+    
+    /**
      * @var bool|null $optimizerStaticHtmlEnabled The OptimizerStaticHtmlEnabled property
     */
     private ?bool $optimizerStaticHtmlEnabled = null;
@@ -531,6 +541,11 @@ class PullZone implements AdditionalDataHolder, Parsable
      * @var string|null $optimizerStaticHtmlWordPressPath The OptimizerStaticHtmlWordPressPath property
     */
     private ?string $optimizerStaticHtmlWordPressPath = null;
+    
+    /**
+     * @var bool|null $optimizerTunnelEnabled The OptimizerTunnelEnabled property
+    */
+    private ?bool $optimizerTunnelEnabled = null;
     
     /**
      * @var bool|null $optimizerWatermarkEnabled Determines if image watermarking should be enabled
@@ -721,6 +736,16 @@ class PullZone implements AdditionalDataHolder, Parsable
      * @var int|null $southAmericaDiscount The Pull Zone specific pricing discount for South America region.
     */
     private ?int $southAmericaDiscount = null;
+    
+    /**
+     * @var string|null $stickySessionCookieName The StickySessionCookieName property
+    */
+    private ?string $stickySessionCookieName = null;
+    
+    /**
+     * @var int|null $stickySessionType The StickySessionType property
+    */
+    private ?int $stickySessionType = null;
     
     /**
      * @var int|null $storageZoneId The ID of the storage zone that the pull zone is linked to
@@ -1467,6 +1492,7 @@ class PullZone implements AdditionalDataHolder, Parsable
             'OptimizerDesktopMaxWidth' => fn(ParseNode $n) => $o->setOptimizerDesktopMaxWidth($n->getIntegerValue()),
             'OptimizerEnabled' => fn(ParseNode $n) => $o->setOptimizerEnabled($n->getBooleanValue()),
             'OptimizerEnableManipulationEngine' => fn(ParseNode $n) => $o->setOptimizerEnableManipulationEngine($n->getBooleanValue()),
+            'OptimizerEnableUpscaling' => fn(ParseNode $n) => $o->setOptimizerEnableUpscaling($n->getBooleanValue()),
             'OptimizerEnableWebP' => fn(ParseNode $n) => $o->setOptimizerEnableWebP($n->getBooleanValue()),
             'OptimizerForceClasses' => fn(ParseNode $n) => $o->setOptimizerForceClasses($n->getBooleanValue()),
             'OptimizerImageQuality' => fn(ParseNode $n) => $o->setOptimizerImageQuality($n->getIntegerValue()),
@@ -1474,9 +1500,11 @@ class PullZone implements AdditionalDataHolder, Parsable
             'OptimizerMinifyJavaScript' => fn(ParseNode $n) => $o->setOptimizerMinifyJavaScript($n->getBooleanValue()),
             'OptimizerMobileImageQuality' => fn(ParseNode $n) => $o->setOptimizerMobileImageQuality($n->getIntegerValue()),
             'OptimizerMobileMaxWidth' => fn(ParseNode $n) => $o->setOptimizerMobileMaxWidth($n->getIntegerValue()),
+            'OptimizerPricing' => fn(ParseNode $n) => $o->setOptimizerPricing($n->getFloatValue()),
             'OptimizerStaticHtmlEnabled' => fn(ParseNode $n) => $o->setOptimizerStaticHtmlEnabled($n->getBooleanValue()),
             'OptimizerStaticHtmlWordPressBypassCookie' => fn(ParseNode $n) => $o->setOptimizerStaticHtmlWordPressBypassCookie($n->getStringValue()),
             'OptimizerStaticHtmlWordPressPath' => fn(ParseNode $n) => $o->setOptimizerStaticHtmlWordPressPath($n->getStringValue()),
+            'OptimizerTunnelEnabled' => fn(ParseNode $n) => $o->setOptimizerTunnelEnabled($n->getBooleanValue()),
             'OptimizerWatermarkEnabled' => fn(ParseNode $n) => $o->setOptimizerWatermarkEnabled($n->getBooleanValue()),
             'OptimizerWatermarkMinImageSize' => fn(ParseNode $n) => $o->setOptimizerWatermarkMinImageSize($n->getIntegerValue()),
             'OptimizerWatermarkOffset' => fn(ParseNode $n) => $o->setOptimizerWatermarkOffset($n->getFloatValue()),
@@ -1522,6 +1550,8 @@ class PullZone implements AdditionalDataHolder, Parsable
             'ShieldDDosProtectionEnabled' => fn(ParseNode $n) => $o->setShieldDDosProtectionEnabled($n->getBooleanValue()),
             'ShieldDDosProtectionType' => fn(ParseNode $n) => $o->setShieldDDosProtectionType($n->getFloatValue()),
             'SouthAmericaDiscount' => fn(ParseNode $n) => $o->setSouthAmericaDiscount($n->getIntegerValue()),
+            'StickySessionCookieName' => fn(ParseNode $n) => $o->setStickySessionCookieName($n->getStringValue()),
+            'StickySessionType' => fn(ParseNode $n) => $o->setStickySessionType($n->getIntegerValue()),
             'StorageZoneId' => fn(ParseNode $n) => $o->setStorageZoneId($n->getIntegerValue()),
             'Suspended' => fn(ParseNode $n) => $o->setSuspended($n->getBooleanValue()),
             'Type' => fn(ParseNode $n) => $o->setType($n->getFloatValue()),
@@ -1770,6 +1800,14 @@ class PullZone implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the OptimizerEnableUpscaling property value. The OptimizerEnableUpscaling property
+     * @return bool|null
+    */
+    public function getOptimizerEnableUpscaling(): ?bool {
+        return $this->optimizerEnableUpscaling;
+    }
+
+    /**
      * Gets the OptimizerEnableWebP property value. Determines if the WebP optimization should be enabled
      * @return bool|null
     */
@@ -1826,6 +1864,14 @@ class PullZone implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the OptimizerPricing property value. The OptimizerPricing property
+     * @return float|null
+    */
+    public function getOptimizerPricing(): ?float {
+        return $this->optimizerPricing;
+    }
+
+    /**
      * Gets the OptimizerStaticHtmlEnabled property value. The OptimizerStaticHtmlEnabled property
      * @return bool|null
     */
@@ -1847,6 +1893,14 @@ class PullZone implements AdditionalDataHolder, Parsable
     */
     public function getOptimizerStaticHtmlWordPressPath(): ?string {
         return $this->optimizerStaticHtmlWordPressPath;
+    }
+
+    /**
+     * Gets the OptimizerTunnelEnabled property value. The OptimizerTunnelEnabled property
+     * @return bool|null
+    */
+    public function getOptimizerTunnelEnabled(): ?bool {
+        return $this->optimizerTunnelEnabled;
     }
 
     /**
@@ -2154,6 +2208,22 @@ class PullZone implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the StickySessionCookieName property value. The StickySessionCookieName property
+     * @return string|null
+    */
+    public function getStickySessionCookieName(): ?string {
+        return $this->stickySessionCookieName;
+    }
+
+    /**
+     * Gets the StickySessionType property value. The StickySessionType property
+     * @return int|null
+    */
+    public function getStickySessionType(): ?int {
+        return $this->stickySessionType;
+    }
+
+    /**
      * Gets the StorageZoneId property value. The ID of the storage zone that the pull zone is linked to
      * @return int|null
     */
@@ -2335,6 +2405,7 @@ class PullZone implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('OptimizerDesktopMaxWidth', $this->getOptimizerDesktopMaxWidth());
         $writer->writeBooleanValue('OptimizerEnabled', $this->getOptimizerEnabled());
         $writer->writeBooleanValue('OptimizerEnableManipulationEngine', $this->getOptimizerEnableManipulationEngine());
+        $writer->writeBooleanValue('OptimizerEnableUpscaling', $this->getOptimizerEnableUpscaling());
         $writer->writeBooleanValue('OptimizerEnableWebP', $this->getOptimizerEnableWebP());
         $writer->writeBooleanValue('OptimizerForceClasses', $this->getOptimizerForceClasses());
         $writer->writeIntegerValue('OptimizerImageQuality', $this->getOptimizerImageQuality());
@@ -2345,6 +2416,7 @@ class PullZone implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('OptimizerStaticHtmlEnabled', $this->getOptimizerStaticHtmlEnabled());
         $writer->writeStringValue('OptimizerStaticHtmlWordPressBypassCookie', $this->getOptimizerStaticHtmlWordPressBypassCookie());
         $writer->writeStringValue('OptimizerStaticHtmlWordPressPath', $this->getOptimizerStaticHtmlWordPressPath());
+        $writer->writeBooleanValue('OptimizerTunnelEnabled', $this->getOptimizerTunnelEnabled());
         $writer->writeBooleanValue('OptimizerWatermarkEnabled', $this->getOptimizerWatermarkEnabled());
         $writer->writeIntegerValue('OptimizerWatermarkMinImageSize', $this->getOptimizerWatermarkMinImageSize());
         $writer->writeFloatValue('OptimizerWatermarkOffset', $this->getOptimizerWatermarkOffset());
@@ -2380,6 +2452,8 @@ class PullZone implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfEnumValues('RoutingFilters', $this->getRoutingFilters());
         $writer->writeBooleanValue('ShieldDDosProtectionEnabled', $this->getShieldDDosProtectionEnabled());
         $writer->writeFloatValue('ShieldDDosProtectionType', $this->getShieldDDosProtectionType());
+        $writer->writeStringValue('StickySessionCookieName', $this->getStickySessionCookieName());
+        $writer->writeIntegerValue('StickySessionType', $this->getStickySessionType());
         $writer->writeIntegerValue('StorageZoneId', $this->getStorageZoneId());
         $writer->writeFloatValue('Type', $this->getType());
         $writer->writeBooleanValue('UseBackgroundUpdate', $this->getUseBackgroundUpdate());
@@ -3144,6 +3218,14 @@ class PullZone implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the OptimizerEnableUpscaling property value. The OptimizerEnableUpscaling property
+     * @param bool|null $value Value to set for the OptimizerEnableUpscaling property.
+    */
+    public function setOptimizerEnableUpscaling(?bool $value): void {
+        $this->optimizerEnableUpscaling = $value;
+    }
+
+    /**
      * Sets the OptimizerEnableWebP property value. Determines if the WebP optimization should be enabled
      * @param bool|null $value Value to set for the OptimizerEnableWebP property.
     */
@@ -3200,6 +3282,14 @@ class PullZone implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the OptimizerPricing property value. The OptimizerPricing property
+     * @param float|null $value Value to set for the OptimizerPricing property.
+    */
+    public function setOptimizerPricing(?float $value): void {
+        $this->optimizerPricing = $value;
+    }
+
+    /**
      * Sets the OptimizerStaticHtmlEnabled property value. The OptimizerStaticHtmlEnabled property
      * @param bool|null $value Value to set for the OptimizerStaticHtmlEnabled property.
     */
@@ -3221,6 +3311,14 @@ class PullZone implements AdditionalDataHolder, Parsable
     */
     public function setOptimizerStaticHtmlWordPressPath(?string $value): void {
         $this->optimizerStaticHtmlWordPressPath = $value;
+    }
+
+    /**
+     * Sets the OptimizerTunnelEnabled property value. The OptimizerTunnelEnabled property
+     * @param bool|null $value Value to set for the OptimizerTunnelEnabled property.
+    */
+    public function setOptimizerTunnelEnabled(?bool $value): void {
+        $this->optimizerTunnelEnabled = $value;
     }
 
     /**
@@ -3525,6 +3623,22 @@ class PullZone implements AdditionalDataHolder, Parsable
     */
     public function setSouthAmericaDiscount(?int $value): void {
         $this->southAmericaDiscount = $value;
+    }
+
+    /**
+     * Sets the StickySessionCookieName property value. The StickySessionCookieName property
+     * @param string|null $value Value to set for the StickySessionCookieName property.
+    */
+    public function setStickySessionCookieName(?string $value): void {
+        $this->stickySessionCookieName = $value;
+    }
+
+    /**
+     * Sets the StickySessionType property value. The StickySessionType property
+     * @param int|null $value Value to set for the StickySessionType property.
+    */
+    public function setStickySessionType(?int $value): void {
+        $this->stickySessionType = $value;
     }
 
     /**

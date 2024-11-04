@@ -126,6 +126,16 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     private ?DateTime $dateCreated = null;
     
     /**
+     * @var float|null $drmBasePriceOverride The DrmBasePriceOverride property
+    */
+    private ?float $drmBasePriceOverride = null;
+    
+    /**
+     * @var float|null $drmCostPerLicenseOverride The DrmCostPerLicenseOverride property
+    */
+    private ?float $drmCostPerLicenseOverride = null;
+    
+    /**
      * @var int|null $drmVersion The DrmVersion property
     */
     private ?int $drmVersion = null;
@@ -151,6 +161,11 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     private ?bool $enableMP4Fallback = null;
     
     /**
+     * @var bool|null $enableMultiAudioTrackSupport The EnableMultiAudioTrackSupport property
+    */
+    private ?bool $enableMultiAudioTrackSupport = null;
+    
+    /**
      * @var bool|null $enableTranscribing Determines if the automatic audio transcribing is currently enabled for this zone.
     */
     private ?bool $enableTranscribing = null;
@@ -164,6 +179,11 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
      * @var bool|null $enableTranscribingTitleGeneration Determines if automatic transcribing title generation is currently enabled.
     */
     private ?bool $enableTranscribingTitleGeneration = null;
+    
+    /**
+     * @var int|null $encodingTier The EncodingTier property
+    */
+    private ?int $encodingTier = null;
     
     /**
      * @var string|null $fontFamily The captions font family.
@@ -186,14 +206,39 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     private ?int $id = null;
     
     /**
+     * @var bool|null $jitEncodingEnabled The JitEncodingEnabled property
+    */
+    private ?bool $jitEncodingEnabled = null;
+    
+    /**
      * @var bool|null $keepOriginalFiles Determines if the original video files should be stored after encoding
     */
     private ?bool $keepOriginalFiles = null;
     
     /**
+     * @var float|null $monthlyChargesEnterpriseDrm The MonthlyChargesEnterpriseDrm property
+    */
+    private ?float $monthlyChargesEnterpriseDrm = null;
+    
+    /**
+     * @var float|null $monthlyChargesPremiumEncoding The MonthlyChargesPremiumEncoding property
+    */
+    private ?float $monthlyChargesPremiumEncoding = null;
+    
+    /**
+     * @var float|null $monthlyChargesTranscribing The MonthlyChargesTranscribing property
+    */
+    private ?float $monthlyChargesTranscribing = null;
+    
+    /**
      * @var string|null $name The name of the Video Library.
     */
     private ?string $name = null;
+    
+    /**
+     * @var string|null $outputCodecs The OutputCodecs property
+    */
+    private ?string $outputCodecs = null;
     
     /**
      * @var string|null $playerKeyColor The key color of the player.
@@ -204,6 +249,11 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
      * @var bool|null $playerTokenAuthenticationEnabled Determines if the player token authentication is enabled
     */
     private ?bool $playerTokenAuthenticationEnabled = null;
+    
+    /**
+     * @var float|null $premiumEncodingPriceOverride The PremiumEncodingPriceOverride property
+    */
+    private ?float $premiumEncodingPriceOverride = null;
     
     /**
      * @var int|null $pullZoneId The ID of the connected underlying pull zone
@@ -256,9 +306,19 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     private ?array $transcribingCaptionLanguages = null;
     
     /**
+     * @var float|null $transcribingPriceOverride The TranscribingPriceOverride property
+    */
+    private ?float $transcribingPriceOverride = null;
+    
+    /**
      * @var string|null $uILanguage The UI language of the player
     */
     private ?string $uILanguage = null;
+    
+    /**
+     * @var bool|null $useSeparateAudioStream The UseSeparateAudioStream property
+    */
+    private ?bool $useSeparateAudioStream = null;
     
     /**
      * @var string|null $vastTagUrl The URL of the VAST tag endpoint for advertising configuration
@@ -498,6 +558,22 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the DrmBasePriceOverride property value. The DrmBasePriceOverride property
+     * @return float|null
+    */
+    public function getDrmBasePriceOverride(): ?float {
+        return $this->drmBasePriceOverride;
+    }
+
+    /**
+     * Gets the DrmCostPerLicenseOverride property value. The DrmCostPerLicenseOverride property
+     * @return float|null
+    */
+    public function getDrmCostPerLicenseOverride(): ?float {
+        return $this->drmCostPerLicenseOverride;
+    }
+
+    /**
      * Gets the DrmVersion property value. The DrmVersion property
      * @return int|null
     */
@@ -538,6 +614,14 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the EnableMultiAudioTrackSupport property value. The EnableMultiAudioTrackSupport property
+     * @return bool|null
+    */
+    public function getEnableMultiAudioTrackSupport(): ?bool {
+        return $this->enableMultiAudioTrackSupport;
+    }
+
+    /**
      * Gets the EnableTranscribing property value. Determines if the automatic audio transcribing is currently enabled for this zone.
      * @return bool|null
     */
@@ -559,6 +643,14 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     */
     public function getEnableTranscribingTitleGeneration(): ?bool {
         return $this->enableTranscribingTitleGeneration;
+    }
+
+    /**
+     * Gets the EncodingTier property value. The EncodingTier property
+     * @return int|null
+    */
+    public function getEncodingTier(): ?int {
+        return $this->encodingTier;
     }
 
     /**
@@ -603,22 +695,32 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
             'Controls' => fn(ParseNode $n) => $o->setControls($n->getStringValue()),
             'CustomHTML' => fn(ParseNode $n) => $o->setCustomHTML($n->getStringValue()),
             'DateCreated' => fn(ParseNode $n) => $o->setDateCreated($n->getDateTimeValue()),
+            'DrmBasePriceOverride' => fn(ParseNode $n) => $o->setDrmBasePriceOverride($n->getFloatValue()),
+            'DrmCostPerLicenseOverride' => fn(ParseNode $n) => $o->setDrmCostPerLicenseOverride($n->getFloatValue()),
             'DrmVersion' => fn(ParseNode $n) => $o->setDrmVersion($n->getIntegerValue()),
             'EnableContentTagging' => fn(ParseNode $n) => $o->setEnableContentTagging($n->getBooleanValue()),
             'EnabledResolutions' => fn(ParseNode $n) => $o->setEnabledResolutions($n->getStringValue()),
             'EnableDRM' => fn(ParseNode $n) => $o->setEnableDRM($n->getBooleanValue()),
             'EnableMP4Fallback' => fn(ParseNode $n) => $o->setEnableMP4Fallback($n->getBooleanValue()),
+            'EnableMultiAudioTrackSupport' => fn(ParseNode $n) => $o->setEnableMultiAudioTrackSupport($n->getBooleanValue()),
             'EnableTranscribing' => fn(ParseNode $n) => $o->setEnableTranscribing($n->getBooleanValue()),
             'EnableTranscribingDescriptionGeneration' => fn(ParseNode $n) => $o->setEnableTranscribingDescriptionGeneration($n->getBooleanValue()),
             'EnableTranscribingTitleGeneration' => fn(ParseNode $n) => $o->setEnableTranscribingTitleGeneration($n->getBooleanValue()),
+            'EncodingTier' => fn(ParseNode $n) => $o->setEncodingTier($n->getIntegerValue()),
             'FontFamily' => fn(ParseNode $n) => $o->setFontFamily($n->getStringValue()),
             'GoogleWidevineDrm' => fn(ParseNode $n) => $o->setGoogleWidevineDrm($n->getObjectValue([VideolibraryPostRequestBody_GoogleWidevineDrm::class, 'createFromDiscriminatorValue'])),
             'HasWatermark' => fn(ParseNode $n) => $o->setHasWatermark($n->getBooleanValue()),
             'Id' => fn(ParseNode $n) => $o->setId($n->getIntegerValue()),
+            'JitEncodingEnabled' => fn(ParseNode $n) => $o->setJitEncodingEnabled($n->getBooleanValue()),
             'KeepOriginalFiles' => fn(ParseNode $n) => $o->setKeepOriginalFiles($n->getBooleanValue()),
+            'MonthlyChargesEnterpriseDrm' => fn(ParseNode $n) => $o->setMonthlyChargesEnterpriseDrm($n->getFloatValue()),
+            'MonthlyChargesPremiumEncoding' => fn(ParseNode $n) => $o->setMonthlyChargesPremiumEncoding($n->getFloatValue()),
+            'MonthlyChargesTranscribing' => fn(ParseNode $n) => $o->setMonthlyChargesTranscribing($n->getFloatValue()),
             'Name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'OutputCodecs' => fn(ParseNode $n) => $o->setOutputCodecs($n->getStringValue()),
             'PlayerKeyColor' => fn(ParseNode $n) => $o->setPlayerKeyColor($n->getStringValue()),
             'PlayerTokenAuthenticationEnabled' => fn(ParseNode $n) => $o->setPlayerTokenAuthenticationEnabled($n->getBooleanValue()),
+            'PremiumEncodingPriceOverride' => fn(ParseNode $n) => $o->setPremiumEncodingPriceOverride($n->getFloatValue()),
             'PullZoneId' => fn(ParseNode $n) => $o->setPullZoneId($n->getIntegerValue()),
             'PullZoneType' => fn(ParseNode $n) => $o->setPullZoneType($n->getFloatValue()),
             'ReadOnlyApiKey' => fn(ParseNode $n) => $o->setReadOnlyApiKey($n->getStringValue()),
@@ -636,7 +738,9 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setTranscribingCaptionLanguages($val);
             },
+            'TranscribingPriceOverride' => fn(ParseNode $n) => $o->setTranscribingPriceOverride($n->getFloatValue()),
             'UILanguage' => fn(ParseNode $n) => $o->setUILanguage($n->getStringValue()),
+            'UseSeparateAudioStream' => fn(ParseNode $n) => $o->setUseSeparateAudioStream($n->getBooleanValue()),
             'VastTagUrl' => fn(ParseNode $n) => $o->setVastTagUrl($n->getStringValue()),
             'ViAiPublisherId' => fn(ParseNode $n) => $o->setViAiPublisherId($n->getStringValue()),
             'VideoCount' => fn(ParseNode $n) => $o->setVideoCount($n->getIntegerValue()),
@@ -682,6 +786,14 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the JitEncodingEnabled property value. The JitEncodingEnabled property
+     * @return bool|null
+    */
+    public function getJitEncodingEnabled(): ?bool {
+        return $this->jitEncodingEnabled;
+    }
+
+    /**
      * Gets the KeepOriginalFiles property value. Determines if the original video files should be stored after encoding
      * @return bool|null
     */
@@ -690,11 +802,43 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the MonthlyChargesEnterpriseDrm property value. The MonthlyChargesEnterpriseDrm property
+     * @return float|null
+    */
+    public function getMonthlyChargesEnterpriseDrm(): ?float {
+        return $this->monthlyChargesEnterpriseDrm;
+    }
+
+    /**
+     * Gets the MonthlyChargesPremiumEncoding property value. The MonthlyChargesPremiumEncoding property
+     * @return float|null
+    */
+    public function getMonthlyChargesPremiumEncoding(): ?float {
+        return $this->monthlyChargesPremiumEncoding;
+    }
+
+    /**
+     * Gets the MonthlyChargesTranscribing property value. The MonthlyChargesTranscribing property
+     * @return float|null
+    */
+    public function getMonthlyChargesTranscribing(): ?float {
+        return $this->monthlyChargesTranscribing;
+    }
+
+    /**
      * Gets the Name property value. The name of the Video Library.
      * @return string|null
     */
     public function getName(): ?string {
         return $this->name;
+    }
+
+    /**
+     * Gets the OutputCodecs property value. The OutputCodecs property
+     * @return string|null
+    */
+    public function getOutputCodecs(): ?string {
+        return $this->outputCodecs;
     }
 
     /**
@@ -711,6 +855,14 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     */
     public function getPlayerTokenAuthenticationEnabled(): ?bool {
         return $this->playerTokenAuthenticationEnabled;
+    }
+
+    /**
+     * Gets the PremiumEncodingPriceOverride property value. The PremiumEncodingPriceOverride property
+     * @return float|null
+    */
+    public function getPremiumEncodingPriceOverride(): ?float {
+        return $this->premiumEncodingPriceOverride;
     }
 
     /**
@@ -794,11 +946,27 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the TranscribingPriceOverride property value. The TranscribingPriceOverride property
+     * @return float|null
+    */
+    public function getTranscribingPriceOverride(): ?float {
+        return $this->transcribingPriceOverride;
+    }
+
+    /**
      * Gets the UILanguage property value. The UI language of the player
      * @return string|null
     */
     public function getUILanguage(): ?string {
         return $this->uILanguage;
+    }
+
+    /**
+     * Gets the UseSeparateAudioStream property value. The UseSeparateAudioStream property
+     * @return bool|null
+    */
+    public function getUseSeparateAudioStream(): ?bool {
+        return $this->useSeparateAudioStream;
     }
 
     /**
@@ -893,21 +1061,34 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('CaptionsFontSize', $this->getCaptionsFontSize());
         $writer->writeStringValue('Controls', $this->getControls());
         $writer->writeStringValue('CustomHTML', $this->getCustomHTML());
+        $writer->writeFloatValue('DrmBasePriceOverride', $this->getDrmBasePriceOverride());
+        $writer->writeFloatValue('DrmCostPerLicenseOverride', $this->getDrmCostPerLicenseOverride());
         $writer->writeBooleanValue('EnableContentTagging', $this->getEnableContentTagging());
         $writer->writeStringValue('EnabledResolutions', $this->getEnabledResolutions());
         $writer->writeBooleanValue('EnableDRM', $this->getEnableDRM());
         $writer->writeBooleanValue('EnableMP4Fallback', $this->getEnableMP4Fallback());
+        $writer->writeBooleanValue('EnableMultiAudioTrackSupport', $this->getEnableMultiAudioTrackSupport());
         $writer->writeBooleanValue('EnableTranscribing', $this->getEnableTranscribing());
         $writer->writeBooleanValue('EnableTranscribingDescriptionGeneration', $this->getEnableTranscribingDescriptionGeneration());
         $writer->writeBooleanValue('EnableTranscribingTitleGeneration', $this->getEnableTranscribingTitleGeneration());
+        $writer->writeIntegerValue('EncodingTier', $this->getEncodingTier());
         $writer->writeStringValue('FontFamily', $this->getFontFamily());
+        $writer->writeBooleanValue('JitEncodingEnabled', $this->getJitEncodingEnabled());
         $writer->writeBooleanValue('KeepOriginalFiles', $this->getKeepOriginalFiles());
+        $writer->writeFloatValue('MonthlyChargesEnterpriseDrm', $this->getMonthlyChargesEnterpriseDrm());
+        $writer->writeFloatValue('MonthlyChargesPremiumEncoding', $this->getMonthlyChargesPremiumEncoding());
+        $writer->writeFloatValue('MonthlyChargesTranscribing', $this->getMonthlyChargesTranscribing());
         $writer->writeStringValue('Name', $this->getName());
+        $writer->writeStringValue('OutputCodecs', $this->getOutputCodecs());
         $writer->writeStringValue('PlayerKeyColor', $this->getPlayerKeyColor());
         $writer->writeBooleanValue('PlayerTokenAuthenticationEnabled', $this->getPlayerTokenAuthenticationEnabled());
+        $writer->writeFloatValue('PremiumEncodingPriceOverride', $this->getPremiumEncodingPriceOverride());
+        $writer->writeCollectionOfEnumValues('ReplicationRegions', $this->getReplicationRegions());
         $writer->writeBooleanValue('ShowHeatmap', $this->getShowHeatmap());
         $writer->writeCollectionOfPrimitiveValues('TranscribingCaptionLanguages', $this->getTranscribingCaptionLanguages());
+        $writer->writeFloatValue('TranscribingPriceOverride', $this->getTranscribingPriceOverride());
         $writer->writeStringValue('UILanguage', $this->getUILanguage());
+        $writer->writeBooleanValue('UseSeparateAudioStream', $this->getUseSeparateAudioStream());
         $writer->writeStringValue('VastTagUrl', $this->getVastTagUrl());
         $writer->writeStringValue('ViAiPublisherId', $this->getViAiPublisherId());
         $writer->writeIntegerValue('WatermarkHeight', $this->getWatermarkHeight());
@@ -1095,6 +1276,22 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the DrmBasePriceOverride property value. The DrmBasePriceOverride property
+     * @param float|null $value Value to set for the DrmBasePriceOverride property.
+    */
+    public function setDrmBasePriceOverride(?float $value): void {
+        $this->drmBasePriceOverride = $value;
+    }
+
+    /**
+     * Sets the DrmCostPerLicenseOverride property value. The DrmCostPerLicenseOverride property
+     * @param float|null $value Value to set for the DrmCostPerLicenseOverride property.
+    */
+    public function setDrmCostPerLicenseOverride(?float $value): void {
+        $this->drmCostPerLicenseOverride = $value;
+    }
+
+    /**
      * Sets the DrmVersion property value. The DrmVersion property
      * @param int|null $value Value to set for the DrmVersion property.
     */
@@ -1135,6 +1332,14 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the EnableMultiAudioTrackSupport property value. The EnableMultiAudioTrackSupport property
+     * @param bool|null $value Value to set for the EnableMultiAudioTrackSupport property.
+    */
+    public function setEnableMultiAudioTrackSupport(?bool $value): void {
+        $this->enableMultiAudioTrackSupport = $value;
+    }
+
+    /**
      * Sets the EnableTranscribing property value. Determines if the automatic audio transcribing is currently enabled for this zone.
      * @param bool|null $value Value to set for the EnableTranscribing property.
     */
@@ -1156,6 +1361,14 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     */
     public function setEnableTranscribingTitleGeneration(?bool $value): void {
         $this->enableTranscribingTitleGeneration = $value;
+    }
+
+    /**
+     * Sets the EncodingTier property value. The EncodingTier property
+     * @param int|null $value Value to set for the EncodingTier property.
+    */
+    public function setEncodingTier(?int $value): void {
+        $this->encodingTier = $value;
     }
 
     /**
@@ -1191,6 +1404,14 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the JitEncodingEnabled property value. The JitEncodingEnabled property
+     * @param bool|null $value Value to set for the JitEncodingEnabled property.
+    */
+    public function setJitEncodingEnabled(?bool $value): void {
+        $this->jitEncodingEnabled = $value;
+    }
+
+    /**
      * Sets the KeepOriginalFiles property value. Determines if the original video files should be stored after encoding
      * @param bool|null $value Value to set for the KeepOriginalFiles property.
     */
@@ -1199,11 +1420,43 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the MonthlyChargesEnterpriseDrm property value. The MonthlyChargesEnterpriseDrm property
+     * @param float|null $value Value to set for the MonthlyChargesEnterpriseDrm property.
+    */
+    public function setMonthlyChargesEnterpriseDrm(?float $value): void {
+        $this->monthlyChargesEnterpriseDrm = $value;
+    }
+
+    /**
+     * Sets the MonthlyChargesPremiumEncoding property value. The MonthlyChargesPremiumEncoding property
+     * @param float|null $value Value to set for the MonthlyChargesPremiumEncoding property.
+    */
+    public function setMonthlyChargesPremiumEncoding(?float $value): void {
+        $this->monthlyChargesPremiumEncoding = $value;
+    }
+
+    /**
+     * Sets the MonthlyChargesTranscribing property value. The MonthlyChargesTranscribing property
+     * @param float|null $value Value to set for the MonthlyChargesTranscribing property.
+    */
+    public function setMonthlyChargesTranscribing(?float $value): void {
+        $this->monthlyChargesTranscribing = $value;
+    }
+
+    /**
      * Sets the Name property value. The name of the Video Library.
      * @param string|null $value Value to set for the Name property.
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the OutputCodecs property value. The OutputCodecs property
+     * @param string|null $value Value to set for the OutputCodecs property.
+    */
+    public function setOutputCodecs(?string $value): void {
+        $this->outputCodecs = $value;
     }
 
     /**
@@ -1220,6 +1473,14 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     */
     public function setPlayerTokenAuthenticationEnabled(?bool $value): void {
         $this->playerTokenAuthenticationEnabled = $value;
+    }
+
+    /**
+     * Sets the PremiumEncodingPriceOverride property value. The PremiumEncodingPriceOverride property
+     * @param float|null $value Value to set for the PremiumEncodingPriceOverride property.
+    */
+    public function setPremiumEncodingPriceOverride(?float $value): void {
+        $this->premiumEncodingPriceOverride = $value;
     }
 
     /**
@@ -1303,11 +1564,27 @@ class VideolibraryPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the TranscribingPriceOverride property value. The TranscribingPriceOverride property
+     * @param float|null $value Value to set for the TranscribingPriceOverride property.
+    */
+    public function setTranscribingPriceOverride(?float $value): void {
+        $this->transcribingPriceOverride = $value;
+    }
+
+    /**
      * Sets the UILanguage property value. The UI language of the player
      * @param string|null $value Value to set for the UILanguage property.
     */
     public function setUILanguage(?string $value): void {
         $this->uILanguage = $value;
+    }
+
+    /**
+     * Sets the UseSeparateAudioStream property value. The UseSeparateAudioStream property
+     * @param bool|null $value Value to set for the UseSeparateAudioStream property.
+    */
+    public function setUseSeparateAudioStream(?bool $value): void {
+        $this->useSeparateAudioStream = $value;
     }
 
     /**

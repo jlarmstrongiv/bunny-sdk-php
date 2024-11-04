@@ -1,14 +1,13 @@
 <?php
 
-namespace EdgeStorageApiClient\Item;
+namespace BunnyApiClient\Models\Shield;
 
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
-use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
-class WithStorageZoneNamePostRequestBody implements AdditionalDataHolder, Parsable 
+class GetCustomWafRulesResponse implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -16,17 +15,17 @@ class WithStorageZoneNamePostRequestBody implements AdditionalDataHolder, Parsab
     private ?array $additionalData = null;
     
     /**
-     * @var array<string>|null $paths The Paths property
+     * @var array<CustomWafRule>|null $data The data property
     */
-    private ?array $paths = null;
+    private ?array $data = null;
     
     /**
-     * @var string|null $rootPath The RootPath property
+     * @var PaginationResponse|null $page The page property
     */
-    private ?string $rootPath = null;
+    private ?PaginationResponse $page = null;
     
     /**
-     * Instantiates a new WithStorageZoneNamePostRequestBody and sets the default values.
+     * Instantiates a new GetCustomWafRulesResponse and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -35,10 +34,10 @@ class WithStorageZoneNamePostRequestBody implements AdditionalDataHolder, Parsab
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return WithStorageZoneNamePostRequestBody
+     * @return GetCustomWafRulesResponse
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): WithStorageZoneNamePostRequestBody {
-        return new WithStorageZoneNamePostRequestBody();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): GetCustomWafRulesResponse {
+        return new GetCustomWafRulesResponse();
     }
 
     /**
@@ -50,38 +49,31 @@ class WithStorageZoneNamePostRequestBody implements AdditionalDataHolder, Parsab
     }
 
     /**
+     * Gets the data property value. The data property
+     * @return array<CustomWafRule>|null
+    */
+    public function getData(): ?array {
+        return $this->data;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'Paths' => function (ParseNode $n) {
-                $val = $n->getCollectionOfPrimitiveValues();
-                if (is_array($val)) {
-                    TypeUtils::validateCollectionValues($val, 'string');
-                }
-                /** @var array<string>|null $val */
-                $this->setPaths($val);
-            },
-            'RootPath' => fn(ParseNode $n) => $o->setRootPath($n->getStringValue()),
+            'data' => fn(ParseNode $n) => $o->setData($n->getCollectionOfObjectValues([CustomWafRule::class, 'createFromDiscriminatorValue'])),
+            'page' => fn(ParseNode $n) => $o->setPage($n->getObjectValue([PaginationResponse::class, 'createFromDiscriminatorValue'])),
         ];
     }
 
     /**
-     * Gets the Paths property value. The Paths property
-     * @return array<string>|null
+     * Gets the page property value. The page property
+     * @return PaginationResponse|null
     */
-    public function getPaths(): ?array {
-        return $this->paths;
-    }
-
-    /**
-     * Gets the RootPath property value. The RootPath property
-     * @return string|null
-    */
-    public function getRootPath(): ?string {
-        return $this->rootPath;
+    public function getPage(): ?PaginationResponse {
+        return $this->page;
     }
 
     /**
@@ -89,8 +81,8 @@ class WithStorageZoneNamePostRequestBody implements AdditionalDataHolder, Parsab
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfPrimitiveValues('Paths', $this->getPaths());
-        $writer->writeStringValue('RootPath', $this->getRootPath());
+        $writer->writeCollectionOfObjectValues('data', $this->getData());
+        $writer->writeObjectValue('page', $this->getPage());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -103,19 +95,19 @@ class WithStorageZoneNamePostRequestBody implements AdditionalDataHolder, Parsab
     }
 
     /**
-     * Sets the Paths property value. The Paths property
-     * @param array<string>|null $value Value to set for the Paths property.
+     * Sets the data property value. The data property
+     * @param array<CustomWafRule>|null $value Value to set for the data property.
     */
-    public function setPaths(?array $value): void {
-        $this->paths = $value;
+    public function setData(?array $value): void {
+        $this->data = $value;
     }
 
     /**
-     * Sets the RootPath property value. The RootPath property
-     * @param string|null $value Value to set for the RootPath property.
+     * Sets the page property value. The page property
+     * @param PaginationResponse|null $value Value to set for the page property.
     */
-    public function setRootPath(?string $value): void {
-        $this->rootPath = $value;
+    public function setPage(?PaginationResponse $value): void {
+        $this->page = $value;
     }
 
 }

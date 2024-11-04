@@ -9,6 +9,7 @@ use BunnyApiClient\Dnszone\Item\Recheckdns\RecheckdnsRequestBuilder;
 use BunnyApiClient\Dnszone\Item\Records\RecordsRequestBuilder;
 use BunnyApiClient\Dnszone\Item\Statistics\StatisticsRequestBuilder;
 use BunnyApiClient\Models\DnsZone\DnsZone;
+use BunnyApiClient\Models\DnsZone\DnsZoneCreate;
 use BunnyApiClient\Models\StructuredBadRequestResponse;
 use Exception;
 use Http\Promise\Promise;
@@ -105,12 +106,12 @@ class ItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * [UpdateDnsZone API Docs](https://docs.bunny.net/reference/dnszonepublic_update)
-     * @param PostRequestBody $body The template for adding optional properties.
+     * @param DnsZoneCreate $body The request body
      * @param ItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<DnsZone|null>
      * @throws Exception
     */
-    public function post(PostRequestBody $body, ?ItemRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
+    public function post(DnsZoneCreate $body, ?ItemRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         return $this->requestAdapter->sendAsync($requestInfo, [DnsZone::class, 'createFromDiscriminatorValue'], null);
     }
@@ -153,11 +154,11 @@ class ItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * [UpdateDnsZone API Docs](https://docs.bunny.net/reference/dnszonepublic_update)
-     * @param PostRequestBody $body The template for adding optional properties.
+     * @param DnsZoneCreate $body The request body
      * @param ItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function toPostRequestInformation(PostRequestBody $body, ?ItemRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toPostRequestInformation(DnsZoneCreate $body, ?ItemRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;

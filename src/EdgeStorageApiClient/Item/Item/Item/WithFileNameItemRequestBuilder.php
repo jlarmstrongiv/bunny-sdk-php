@@ -11,7 +11,7 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 use Psr\Http\Message\StreamInterface;
 
 /**
- * Builds and executes requests for operations under /{storageZoneName}/{path}/{fileName}
+ * Builds and executes requests for operations under /{storageZoneName}/{+path}/{fileName}
 */
 class WithFileNameItemRequestBuilder extends BaseRequestBuilder 
 {
@@ -21,7 +21,7 @@ class WithFileNameItemRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/{storageZoneName}/{path}/{fileName}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/{storageZoneName}/{+path}/{fileName}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {

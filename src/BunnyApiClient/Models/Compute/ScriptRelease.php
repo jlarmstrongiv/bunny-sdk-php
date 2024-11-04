@@ -31,6 +31,11 @@ class ScriptRelease implements AdditionalDataHolder, Parsable
     private ?string $code = null;
     
     /**
+     * @var string|null $commitSha The CommitSha property
+    */
+    private ?string $commitSha = null;
+    
+    /**
      * @var DateTime|null $datePublished The DatePublished property
     */
     private ?DateTime $datePublished = null;
@@ -114,6 +119,14 @@ class ScriptRelease implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the CommitSha property value. The CommitSha property
+     * @return string|null
+    */
+    public function getCommitSha(): ?string {
+        return $this->commitSha;
+    }
+
+    /**
      * Gets the DatePublished property value. The DatePublished property
      * @return DateTime|null
     */
@@ -147,6 +160,7 @@ class ScriptRelease implements AdditionalDataHolder, Parsable
             'Author' => fn(ParseNode $n) => $o->setAuthor($n->getStringValue()),
             'AuthorEmail' => fn(ParseNode $n) => $o->setAuthorEmail($n->getStringValue()),
             'Code' => fn(ParseNode $n) => $o->setCode($n->getStringValue()),
+            'CommitSha' => fn(ParseNode $n) => $o->setCommitSha($n->getStringValue()),
             'DatePublished' => fn(ParseNode $n) => $o->setDatePublished($n->getDateTimeValue()),
             'DateReleased' => fn(ParseNode $n) => $o->setDateReleased($n->getDateTimeValue()),
             'Deleted' => fn(ParseNode $n) => $o->setDeleted($n->getBooleanValue()),
@@ -197,6 +211,7 @@ class ScriptRelease implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('Author', $this->getAuthor());
         $writer->writeStringValue('AuthorEmail', $this->getAuthorEmail());
         $writer->writeStringValue('Code', $this->getCode());
+        $writer->writeStringValue('CommitSha', $this->getCommitSha());
         $writer->writeDateTimeValue('DatePublished', $this->getDatePublished());
         $writer->writeDateTimeValue('DateReleased', $this->getDateReleased());
         $writer->writeBooleanValue('Deleted', $this->getDeleted());
@@ -237,6 +252,14 @@ class ScriptRelease implements AdditionalDataHolder, Parsable
     */
     public function setCode(?string $value): void {
         $this->code = $value;
+    }
+
+    /**
+     * Sets the CommitSha property value. The CommitSha property
+     * @param string|null $value Value to set for the CommitSha property.
+    */
+    public function setCommitSha(?string $value): void {
+        $this->commitSha = $value;
     }
 
     /**
